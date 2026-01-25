@@ -261,7 +261,7 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Contact */}
             <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <span>info@noqtatayn.com</span>
+              <span>info@noqtatain.com</span>
               <span>966543569492</span>
             </div>
 

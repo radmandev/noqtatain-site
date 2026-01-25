@@ -97,7 +97,21 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Slide Navigation */}
-      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-30 space-y-5">
+      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-30 flex flex-col items-center space-y-4">
+        {currentSlide > 0 && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            onClick={prevSlide}
+            className="p-2 bg-white/70 dark:bg-slate-800/70 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-700 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Previous section"
+          >
+            <ChevronUp className="text-slate-900 dark:text-white" size={18} />
+          </motion.button>
+        )}
+
         {slides.map((_, index) => (
           <motion.button
             key={index}
@@ -105,9 +119,10 @@ export default function Home() {
               setDirection(index > currentSlide ? 1 : -1);
               setCurrentSlide(index);
             }}
-            className="relative group block"
+            className="relative group"
             whileHover={{ scale: 1.3 }}
             whileTap={{ scale: 0.9 }}
+            aria-label={`Go to slide ${index + 1}`}
           >
             {index === currentSlide ? (
               <motion.div
@@ -120,11 +135,25 @@ export default function Home() {
             )}
           </motion.button>
         ))}
+
+        {currentSlide < slides.length - 1 && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            onClick={nextSlide}
+            className="p-2 bg-white/70 dark:bg-slate-800/70 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-700 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Next section"
+          >
+            <ChevronDown className="text-slate-900 dark:text-white" size={18} />
+          </motion.button>
+        )}
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-30 flex items-center gap-3">
-        {currentSlide > 0 && (
+      {/* Up Navigation */}
+      {currentSlide > 0 && (
+        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-30">
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -135,9 +164,12 @@ export default function Home() {
           >
             <ChevronUp className="text-slate-900 dark:text-white" size={24} />
           </motion.button>
-        )}
-        
-        {currentSlide < slides.length - 1 && (
+        </div>
+      )}
+
+      {/* Down Navigation */}
+      {currentSlide < slides.length - 1 && (
+        <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-30">
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -148,8 +180,8 @@ export default function Home() {
           >
             <ChevronDown className="text-slate-900 dark:text-white" size={24} />
           </motion.button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

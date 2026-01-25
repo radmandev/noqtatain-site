@@ -92,7 +92,9 @@ export default function Home() {
           }}
           className="absolute inset-0"
         >
-          <CurrentSlideComponent />
+          <div className="h-full overflow-y-auto pb-32 pt-6">
+            <CurrentSlideComponent />
+          </div>
         </motion.div>
       </AnimatePresence>
 

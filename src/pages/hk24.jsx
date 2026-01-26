@@ -318,7 +318,7 @@ function SectionCard({ children, className = '' }) {
   );
 }
 
-export default function HK24() {
+export default function hk24() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [passcode, setPasscode] = useState('');
   const [authError, setAuthError] = useState('');

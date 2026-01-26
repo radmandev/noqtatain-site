@@ -1,88 +1,237 @@
 import React from 'react';
-import { Sparkles, Target, Layers, Rocket, CalendarRange, Workflow } from 'lucide-react';
+import {
+  Sparkles,
+  Target,
+  Compass,
+  Rocket,
+  Map,
+  BarChart3,
+  Layers3,
+  Megaphone,
+  Repeat,
+  LineChart,
+  UsersRound
+} from 'lucide-react';
 
-const highlightStats = [
+const situationData = [
   {
-    label: 'جهوزية الظهور الرقمي',
-    value: '65%',
-    detail: 'قنوات التواصل موجودة لكن بدون خط سردي موحد أو محتوى متجدد.'
+    title: 'نظرة عامة',
+    body:
+      'هيكل العربة متجر متخصص في قطع غيار السيارات الأوروبية والأمريكية (OEM وبديلة) بخبرة تتجاوز 25 عاماً في السوق السعودي، يعمل بنموذج B2C وB2B من خلال فرع الرياض ومتجر إلكتروني يغطي جميع مناطق المملكة.'
   },
   {
-    label: 'الوعي بالعلامة',
-    value: 'متوسط',
-    detail: 'تعرفاً عالياً داخل المجتمع المحلي، وحضوراً ضعيفاً خارج المنطقة.'
-  },
-  {
-    label: 'سرعة الاستجابة التجارية',
-    value: '48 ساعة',
-    detail: 'فجوة واضحة بين جمع الطلبات وتحويلها إلى فرص بيع فعلية.'
-  }
-];
-
-const marketingPillars = [
-  {
-    title: 'هندسة الهوية والسرد',
-    summary: 'تحويل رواية "هيكل العربة" إلى قصة تقدم حلول نقل ذكية ومدعومة بالثقة.',
+    title: 'الأداء التسويقي الحالي',
     bullets: [
-      'ابتكار نظام بصري جديد يدمج اللون النحاسي مع الأزرق البترولي لإبراز الدقة التقنية.',
-      'إنتاج دليل سردي قصصي يتتبع رحلة العميل من الحاجة اللوجستية إلى الطمأنينة التشغيلية.',
-      'تصميم لوحة رسائل مرنة يمكن إعادة استخدامها في العروض والاجتماعات.'
+      'لا توجد حملات إعلانية نشطة حالياً.',
+      'الاعتماد الأساسي على التسويق العضوي (SEO) مع نتائج جيدة نسبياً.',
+      'إيقاف إعلانات Google سابقاً بسبب مشاكل تشغيلية وضعف قياس العائد.',
+      'المحتوى الحالي يعتمد على تصاميم عامة بلا مسارات تحويل واضحة.'
     ]
   },
   {
-    title: 'تنشيط القنوات الرقمية',
-    summary: 'تحويل القنوات الحالية إلى مسارات بيع فعلية قابلة للقياس.',
+    title: 'التحديات الرئيسية',
     bullets: [
-      'إعادة بناء موقع مصغر يركز على القطاعات عالية الربحية (سلاسل الإمداد، المصانع).',
-      'حملات لينكدإن موجهة لأصحاب القرار مع دراسات حالة مصغرة ومؤشرات أداء.',
-      'بناء لوحة تحكم فورية لالتقاط الطلبات وتقسيمها إلى مراحل استعداد.'
+      'ارتفاع السعر مقارنة بالمنافسين في السوق المفتوح.',
+      'تجربة مستخدم ضعيفة نسبياً في المتجر الإلكتروني (البحث، التأكد من التوافق).',
+      'غياب تتبع دقيق للتحويلات وتكلفة الاستحواذ.',
+      'عدم استغلال قيمة الضمان والخبرة كعناصر تفاضلية في الرسائل.'
     ]
   },
   {
-    title: 'تنشيط الشراكات',
-    summary: 'مضاعفة نقاط الاتصال من خلال مؤثرين متخصصين وفعاليات قطاعية.',
+    title: 'نقاط القوة',
     bullets: [
-      'رعاية محتوى في مجلات متخصصة بالنقل والصناعة خلال ربعين متتاليين.',
-      'التواجد كشريك تشغيلي في فعالية لوجستية خفيفة مع عرض مباشر للحلول.',
-      'ابتكار حوافز مشتركة مع شركات استيراد تمنح نقاطاً مقابل الحجز المبكر.'
+      'خبرة طويلة قادت إلى ثقة عالية لدى العملاء.',
+      'ضمان وخدمة ما بعد البيع حقيقية.',
+      'تخصص في سيارات ذات قيمة عالية مثل BMW وMercedes.',
+      'امتلاك قاعدة بيانات عملاء ووجود CRM فعال.'
     ]
   }
 ];
 
-const packageInclusions = [
-  'إدارة مشروع مخصصة مع قيادة استراتيجية واجتماعات أسبوعية.',
-  'إنتاج محتوى متكامل (نص، عناصر مرئية، عروض تفاعلية) بـ٣ لغات حسب الحاجة.',
-  'تشغيل الحملات الرقمية الإعلانية والعضوية مع تقارير أداء حية.',
-  'بناء لوحة ذكاء تسويقي تربط بين الطلبات والفرص عبر CRM خفيف.',
-  'تدريب فريق هيكل العربة على تسليم العروض والتفاوض السريع.'
+const marketingDirection = {
+  positioning: {
+    from: 'متجر يبيع قطع غيار',
+    to: 'خبير قطع غيار السيارات الأوروبية والأمريكية – يضمن لك القطعة الصحيحة وراحة البال'
+  },
+  strategy: [
+    'عدم الدخول في منافسة سعرية مباشرة.',
+    'التركيز على القيمة مقابل السعر (ضمان، تقليل المخاطر، دعم فني).',
+    'تحويل المحتوى إلى أداة بيع غير مباشرة.',
+    'تحسين تجربة المتجر لرفع معدل التحويل قبل زيادة الزيارات.'
+  ],
+  messages: ['القطعة الصح من أول مرة', 'ضمانك معنا قبل وبعد الشراء', 'نساعدك تختار، مو بس نبيعك'],
+  channels: ['SEO وتعزيزه بمحتوى تقني', 'Google Ads للتحويل بذكاء', 'وسائل التواصل الاجتماعي (محتوى + إعلانات)', 'البريد الإلكتروني لإعادة تنشيط العملاء', 'شراكات مع صناع محتوى سيارات']
+};
+
+const roadmapPhases = [
+  {
+    title: 'المرحلة الأولى: التأسيس والتحسين',
+    period: 'الأيام 1–30',
+    focus: [
+      {
+        heading: 'تحسين الأساسيات',
+        bullets: ['مراجعة تجربة المستخدم في المتجر (البحث، وضوح التوافق).', 'إبراز عناصر الثقة والضمان داخل الصفحات.']
+      },
+      {
+        heading: 'إعداد أدوات التتبع',
+        bullets: ['Google Analytics', 'Google Tag Manager', 'ربط التحويلات بالـ CRM لقياس قيمة كل طلب.']
+      },
+      {
+        heading: 'إعادة صياغة الرسائل',
+        bullets: ['تأكيد قيمة الضمان والخبرة وتقليل المخاطر.', 'تحديث وصف المتجر والصفحات الأساسية بما يتماشى مع التموضع الجديد.']
+      },
+      {
+        heading: 'إعداد المحتوى',
+        bullets: ['تقويم محتوى 30 يوماً.', 'إنتاج فيديوهات Reels تثقيفية.', 'إطلاق فكرة كاركتر تسويقي يمثل الخبرة.']
+      }
+    ]
+  },
+  {
+    title: 'المرحلة الثانية: الإطلاق والاختبار',
+    period: 'الأيام 31–60',
+    focus: [
+      {
+        heading: 'إطلاق الحملات الإعلانية',
+        bullets: ['Google Ads لحملات بحث BMW وMercedes واستهداف نية الشراء.', 'إعلانات سوشيال توعوية + إعادة استهداف زوار المتجر.']
+      },
+      {
+        heading: 'برنامج المحتوى',
+        bullets: ['نسب نشر واضحة: 40% تثقيفي، 25% منتجات، 15% تفاعلي، 10% تعريفي، 10% مجتمعي.']
+      },
+      {
+        heading: 'البريد الإلكتروني',
+        bullets: ['حملة إعادة تنشيط العملاء السابقين.', 'محتوى تثقيفي + عروض Bundles ذكية.']
+      }
+    ]
+  },
+  {
+    title: 'المرحلة الثالثة: التحسين والتوسع',
+    period: 'الأيام 61–90',
+    focus: [
+      {
+        heading: 'تحسين الأداء',
+        bullets: ['تحليل الحملات أسبوعياً.', 'تعزيز الإعلانات الأعلى تحويلاً وإيقاف الضعيفة.']
+      },
+      {
+        heading: 'زيادة متوسط قيمة الطلب',
+        bullets: ['إطلاق باقات قطع (Bundles).', 'عروض مرتبطة بالصيانة الدورية.']
+      },
+      {
+        heading: 'بناء العلامة',
+        bullets: ['تعاون مع صناع محتوى سيارات.', 'ترسيخ صورة هيكل العربة كخبير موثوق.']
+      }
+    ]
+  }
 ];
 
-const nextSteps = [
+const kpis = ['زيادة المبيعات بنسبة 30%', 'رفع معدل التحويل في المتجر', 'تقليل السلة المهجورة', 'زيادة الطلبات من العملاء العائدين'];
+
+const packages = [
   {
-    label: 'الأسبوع 1',
-    title: 'ورشة الانطلاق المتخصصة',
-    detail: 'تثبيت مؤشرات النجاح وربط فرق المبيعات والعمليات مع فريق نقطتين.'
+    tier: '🟢',
+    name: 'باقة التأسيس والتحسين (Foundation)',
+    highlight: 'مناسبة للانطلاق الصحيح دون مخاطرة عالية',
+    scope: [
+      'إعادة صياغة الرسائل التسويقية والتموضع.',
+      'تحسين تجربة المتجر (UX/UI) مع تنفيذ جزئي سريع.',
+      'إعداد أدوات التتبع (GA4، GTM، Conversion Tracking).',
+      'تقويم محتوى شهري (30 يوماً) وإدارة نشر أساسي.',
+      'تقارير أداء شهرية مختصرة.'
+    ],
+    goals: ['رفع معدل التحويل.', 'تجهيز المتجر للإعلانات.', 'تعزيز وضوح القيمة مقابل السعر.'],
+    price: '8,000 – 12,000 ريال / شهرياً'
   },
   {
-    label: 'الأسبوع 2',
-    title: 'تسليم دليل الهوية والسرد',
-    detail: 'اعتماد الرسائل الأساسية وخريطة الجمهور قبل أي نشر خارجي.'
+    tier: '🔵',
+    name: 'باقة النمو والمبيعات (Growth)',
+    highlight: 'مناسبة لتحقيق نمو فعلي ورفع المبيعات',
+    scope: [
+      'كل ما في باقة التأسيس.',
+      'إدارة حملات Google Ads (بحث + إعادة استهداف).',
+      'إدارة حملات سوشيال ميديا ممولة.',
+      'إنتاج محتوى فيديو تثقيفي (Reels).',
+      'تفعيل البريد الإلكتروني (إعادة تنشيط + عروض).',
+      'تحسين صفحات المنتجات الأعلى مبيعاً وتقارير تفصيلية تربط بالمبيعات.'
+    ],
+    goals: ['زيادة المبيعات الشهرية.', 'رفع متوسط قيمة الطلب.', 'تقليل السلة المهجورة.'],
+    price: '15,000 – 20,000 ريال / شهرياً (لا يشمل ميزانية الإعلانات)'
   },
   {
-    label: 'الأسبوع 4',
-    title: 'إطلاق القنوات والحملات',
-    detail: 'تشغيل المحتوى المدعوم والموجه مع أول تقرير أداء تشغيلي.'
-  },
-  {
-    label: 'الأسبوع 8',
-    title: 'مراجعة منتصف الدورة',
-    detail: 'تحليل الصفقات النشطة وتعديل العروض والحوافز بناءً على البيانات.'
+    tier: '🔴',
+    name: 'باقة التوسع وبناء العلامة (Scale & Brand)',
+    highlight: 'مناسبة للهيمنة وبناء علامة قوية طويلة المدى',
+    scope: [
+      'إدارة تسويق شاملة (CMO as a Service).',
+      'إدارة متقدمة لإعلانات Google وSocial.',
+      'استراتيجية محتوى عميقة + كاركتر تسويقي.',
+      'شراكات مع صناع محتوى سيارات.',
+      'تحسين متواصل لتجربة المتجر وبناء Bundles ذكية.',
+      'تقارير استراتيجية واجتماعات شهرية عليا.'
+    ],
+    goals: ['تحقيق نمو مستدام.', 'رفع الوعي بالعلامة.', 'تثبيت هيكل العربة كمرجع موثوق.'],
+    price: '25,000 – 35,000 ريال / شهرياً (لا يشمل ميزانية الإعلانات)'
   }
+];
+
+const adsPlan = {
+  budget: {
+    total: '10,000 – 15,000 ريال شهرياً',
+    split: [
+      { label: 'Google Ads', value: '60% (6,000 – 9,000 ريال)' },
+      { label: 'Social Ads (Meta / TikTok)', value: '40% (4,000 – 6,000 ريال)' }
+    ]
+  },
+  google: {
+    campaigns: ['Search Ads (أساسية)', 'Remarketing عبر الشبكة وعبر البحث'],
+    budgetSplit: ['حملات البحث 70%', 'إعادة الاستهداف 30%'],
+    structure: ['حملة BMW Parts', 'حملة Mercedes Parts', 'حملة Brand (اسم هيكل العربة)'],
+    metrics: [
+      'CPC متوقع 2 – 5 ريال',
+      'نقرات شهرية 1,500 – 2,500',
+      'معدل تحويل 1.5% – 2.5%',
+      'طلب متوقع من Google: 25 – 60 طلب',
+      'متوسط قيمة الطلب 700 – 1,000 ريال',
+      'إيراد شهري متوقع 17,500 – 60,000 ريال'
+    ]
+  },
+  social: {
+    goal: 'بناء الوعي بالقيمة (ضمان – ثقة) وإعادة الاستهداف.',
+    campaignTypes: ['Awareness (فيديو)', 'Traffic', 'Remarketing (تحويل)'],
+    budgetSplit: ['توعية 50%', 'إعادة استهداف 30%', 'تحويل مباشر 20%'],
+    metrics: ['CPM 10 – 20 ريال', 'Reach شهري 200K – 350K', 'CTR 0.8% – 1.5%', 'زيارات للمتجر 1,200 – 2,000']
+  }
+};
+
+const remarketing = {
+  audiences: ['زوار المتجر خلال 30/60/90 يوماً.', 'زوار صفحات BMW وMercedes.', 'السلة المهجورة.', 'متابعو المنصات الاجتماعية.'],
+  messages: ['لسه محتار بالقطعة؟ إحنا نساعدك تختار الصح', 'ضمان القطعة أهم من السعر', 'خبرة 25 سنة معك خطوة بخطوة']
+};
+
+const expectations = [
+  {
+    title: 'سيناريو محافظ',
+    details: ['إجمالي الطلبات: 70 – 100', 'إجمالي الإيرادات: 50,000 – 80,000 ريال']
+  },
+  {
+    title: 'سيناريو واقعي',
+    details: ['إجمالي الطلبات: 120 – 180', 'إجمالي الإيرادات: 90,000 – 150,000 ريال']
+  },
+  {
+    title: 'سيناريو متفائل',
+    details: ['إجمالي الطلبات: 200+', 'إجمالي الإيرادات: 180,000+ ريال']
+  }
+];
+
+const executionNotes = [
+  'لا يتم إطلاق الإعلانات قبل ضبط التتبع الكامل.',
+  'أول 14 يوماً مخصصة للاختبار والتحسين.',
+  'التركيز على كلمات نية الشراء وليس الكلمات العامة.',
+  'المحتوى التوعوي عنصر أساسي لنجاح الحملات والإقناع بالقيمة.'
 ];
 
 function SectionCard({ children, className = '' }) {
   return (
-    <div className={`border border-white/10 rounded-3xl bg-white/5 backdrop-blur-lg p-6 ${className}`}>
+    <div className={`rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg p-6 ${className}`}>
       {children}
     </div>
   );
@@ -90,85 +239,46 @@ function SectionCard({ children, className = '' }) {
 
 export default function HikalarabaCase24() {
   return (
-    <div dir="rtl" className="min-h-screen bg-[#05070F] text-white">
+    <div dir="rtl" className="min-h-screen bg-[#04060D] text-white">
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 opacity-50" style={{ background: 'radial-gradient(circle at top, rgba(110,231,183,0.25), transparent 55%)' }} />
-        <div className="absolute inset-y-0 right-0 w-1/2 opacity-20" style={{ background: 'linear-gradient(120deg, rgba(37,99,235,0.4), transparent)' }} />
+        <div className="absolute inset-0 opacity-60" style={{ background: 'radial-gradient(circle at top, rgba(16,185,129,0.25), transparent 55%)' }} />
+        <div className="absolute inset-y-0 left-0 w-1/2 opacity-20" style={{ background: 'linear-gradient(120deg, rgba(56,189,248,0.4), transparent)' }} />
         <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 text-sm text-emerald-200/90 bg-white/10 px-4 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 text-sm text-emerald-200 bg-white/10 px-4 py-2 rounded-full mb-6">
             <Sparkles size={16} />
-            <span>حالة خاصة · 2024</span>
+            <span>ملف خاص · 2024</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white">
-            تحليل تسويقي متخصص للعميل
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            الخطة التسويقية الشاملة –
             <span className="text-emerald-300 block mt-2">هيكل العربة</span>
           </h1>
           <p className="text-lg text-slate-200 max-w-3xl mt-6">
-            صممنا هذه الصفحة كمرجع داخلي لعرض صورة الوضع الحالي وتوجهات النمو المقترحة، مع باقة تنفيذية قابلة للتفعيل فوراً دون نشر عام.
+            مرجع داخلي متكامل لتحليل الوضع الحالي، ورسم التوجه التسويقي، وخارطة طريق تنفيذية تمتد 90 يوماً لتحقيق نمو فعلي دون المساس بهوية العلامة أو دخول حرب أسعار.
           </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {highlightStats.map((stat) => (
-              <SectionCard key={stat.label}>
-                <p className="text-sm text-slate-300">{stat.label}</p>
-                <p className="text-3xl font-semibold text-white mt-2">{stat.value}</p>
-                <p className="text-sm text-slate-400 mt-3 leading-relaxed">{stat.detail}</p>
-              </SectionCard>
-            ))}
-          </div>
         </div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 pb-8 space-y-16">
+      <div className="relative max-w-6xl mx-auto px-6 pb-20 space-y-16">
         <section>
           <div className="flex items-center gap-3 mb-6">
             <Target className="text-emerald-300" />
             <div>
               <p className="text-sm text-slate-400">01</p>
-              <h2 className="text-3xl font-semibold">الوضع الحالي والرؤى</h2>
+              <h2 className="text-3xl font-semibold">الوضع الحالي (Current Situation Analysis)</h2>
             </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            <SectionCard>
-              <h3 className="text-xl font-semibold mb-2">مكانة السوق</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                حضور قوي في سوق النقل المحلي مع تركيز على حلول تعديل الهياكل، لكن الرسالة الحالية تضعف القيمة الابتكارية والالتزام بالموثوقية طويلة الأمد.
-              </p>
-            </SectionCard>
-            <SectionCard>
-              <h3 className="text-xl font-semibold mb-2">القنوات الرقمية</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                قنوات التواصل الاجتماعي تعمل بنمط موسمي، والموقع يفتقد لرحلة عميل واضحة أو نماذج طلب تفاعلية، ما يقلل التحويلات المباشرة.
-              </p>
-            </SectionCard>
-            <SectionCard>
-              <h3 className="text-xl font-semibold mb-2">سلوك الجمهور</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                صناع قرار يبحثون عن استجابات سريعة وعروض موثقة تقنياً، ويهتمون بضمانات ما بعد التسليم أكثر من السعر الأولي.
-              </p>
-            </SectionCard>
-          </div>
-        </section>
-
-        <section>
-          <div className="flex items-center gap-3 mb-6">
-            <Layers className="text-emerald-300" />
-            <div>
-              <p className="text-sm text-slate-400">02</p>
-              <h2 className="text-3xl font-semibold">مقترحات التسويق المركزة</h2>
-            </div>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {marketingPillars.map((pillar) => (
-              <SectionCard key={pillar.title} className="flex flex-col">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold">{pillar.title}</h3>
-                  <p className="text-slate-300 text-sm mt-2">{pillar.summary}</p>
-                </div>
-                <ul className="mt-4 space-y-3 text-sm text-slate-300 list-disc pr-4">
-                  {pillar.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
+          <div className="grid gap-6 md:grid-cols-2">
+            {situationData.map((item) => (
+              <SectionCard key={item.title}>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                {item.body && <p className="text-sm leading-relaxed text-slate-200">{item.body}</p>}
+                {item.bullets && (
+                  <ul className="mt-3 space-y-2 text-sm text-slate-200 list-disc pr-5">
+                    {item.bullets.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                )}
               </SectionCard>
             ))}
           </div>
@@ -176,80 +286,313 @@ export default function HikalarabaCase24() {
 
         <section>
           <div className="flex items-center gap-3 mb-6">
-            <Rocket className="text-emerald-300" />
+            <Compass className="text-emerald-300" />
             <div>
-              <p className="text-sm text-slate-400">03</p>
-              <h2 className="text-3xl font-semibold">الباقة التنفيذية المخصصة</h2>
+              <p className="text-sm text-slate-400">02</p>
+              <h2 className="text-3xl font-semibold">مقترحات التوجه التسويقي</h2>
             </div>
           </div>
           <SectionCard className="space-y-8">
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <p className="text-sm text-slate-400">المدة</p>
-                <p className="text-2xl font-semibold">12 أسبوعاً قابلة للتمديد</p>
+                <p className="text-sm text-slate-400">التمركز التسويقي</p>
+                <div className="mt-3 bg-white/5 rounded-2xl p-4">
+                  <p className="text-xs text-slate-400">الوضع الحالي</p>
+                  <p className="text-base font-semibold text-white">{marketingDirection.positioning.from}</p>
+                  <p className="text-xs text-slate-400 mt-3">التمركز الجديد</p>
+                  <p className="text-base font-semibold text-emerald-300">{marketingDirection.positioning.to}</p>
+                </div>
               </div>
               <div>
-                <p className="text-sm text-slate-400">ميزانية استثمارية مقترحة</p>
-                <p className="text-2xl font-semibold">220,000 ريال · قابلة للتجزئة حسب المراحل</p>
+                <p className="text-sm text-slate-400">الاستراتيجية العامة</p>
+                <ul className="mt-3 space-y-2 text-sm text-slate-200 list-disc pr-5">
+                  {marketingDirection.strategy.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              {packageInclusions.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full bg-emerald-300 mt-2" />
-                  <p className="text-sm text-slate-200 leading-relaxed">{item}</p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <p className="text-sm text-slate-400 mb-2">الرسائل الأساسية</p>
+                <div className="flex flex-wrap gap-2">
+                  {marketingDirection.messages.map((msg) => (
+                    <span key={msg} className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm text-white">
+                      {msg}
+                    </span>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div>
+                <p className="text-sm text-slate-400 mb-2">القنوات المعتمدة</p>
+                <ul className="space-y-2 text-sm text-slate-200 list-disc pr-5">
+                  {marketingDirection.channels.map((channel) => (
+                    <li key={channel}>{channel}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </SectionCard>
         </section>
 
         <section>
           <div className="flex items-center gap-3 mb-6">
-            <CalendarRange className="text-emerald-300" />
+            <Map className="text-emerald-300" />
             <div>
-              <p className="text-sm text-slate-400">04</p>
-              <h2 className="text-3xl font-semibold">الخطوات القادمة</h2>
+              <p className="text-sm text-slate-400">03</p>
+              <h2 className="text-3xl font-semibold">خارطة طريق 90 يوماً لتحقيق نمو فعلي</h2>
             </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-4">
-            {nextSteps.map((step) => (
-              <SectionCard key={step.label}>
-                <p className="text-xs uppercase tracking-[0.2em] text-emerald-200">{step.label}</p>
-                <h3 className="text-lg font-semibold mt-2">{step.title}</h3>
-                <p className="text-sm text-slate-300 mt-3 leading-relaxed">{step.detail}</p>
+          <div className="space-y-6">
+            {roadmapPhases.map((phase) => (
+              <SectionCard key={phase.title} className="space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-sm text-slate-400">{phase.period}</p>
+                    <h3 className="text-2xl font-semibold">{phase.title}</h3>
+                  </div>
+                  <span className="text-sm text-emerald-200 bg-emerald-500/10 px-4 py-1 rounded-full">Milestone</span>
+                </div>
+                <div className="grid gap-4 md:grid-cols-3">
+                  {phase.focus.map((block) => (
+                    <div key={block.heading} className="rounded-2xl border border-white/10 p-4 bg-white/2">
+                      <p className="text-base font-semibold text-white">{block.heading}</p>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-200 list-disc pr-5">
+                        {block.bullets.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </SectionCard>
             ))}
           </div>
         </section>
 
-        <section className="mb-20">
+        <section>
           <div className="flex items-center gap-3 mb-6">
-            <Workflow className="text-emerald-300" />
+            <BarChart3 className="text-emerald-300" />
             <div>
-              <p className="text-sm text-slate-400">05</p>
-              <h2 className="text-3xl font-semibold">ما الذي نحتاجه من الفريق؟</h2>
+              <p className="text-sm text-slate-400">04</p>
+              <h2 className="text-3xl font-semibold">مؤشرات الأداء (KPIs)</h2>
             </div>
           </div>
-          <SectionCard className="grid gap-8 md:grid-cols-3">
+          <SectionCard className="flex flex-wrap gap-3">
+            {kpis.map((kpi) => (
+              <span key={kpi} className="px-4 py-2 rounded-full bg-white/10 text-sm font-medium text-white border border-white/10">
+                {kpi}
+              </span>
+            ))}
+          </SectionCard>
+        </section>
+
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <Layers3 className="text-emerald-300" />
             <div>
-              <p className="text-sm text-slate-400">بيانات فورية</p>
-              <p className="text-base text-slate-200 mt-2 leading-relaxed">
-                قوائم العملاء الحالية، متوسط زمن التسليم، وأي عروض أسعار متكررة لتحديد هوامش الحركة التسويقية.
-              </p>
+              <p className="text-sm text-slate-400">05</p>
+              <h2 className="text-3xl font-semibold">باقات خدمات التسويق المقترحة</h2>
+            </div>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {packages.map((pkg) => (
+              <SectionCard key={pkg.name} className="flex flex-col h-full">
+                <div>
+                  <p className="text-3xl mb-2">{pkg.tier}</p>
+                  <h3 className="text-xl font-semibold">{pkg.name}</h3>
+                  <p className="text-sm text-emerald-200 mt-1">{pkg.highlight}</p>
+                </div>
+                <div className="mt-4">
+                  <p className="text-sm text-slate-400 mb-2">نطاق العمل</p>
+                  <ul className="space-y-2 text-sm text-slate-200 list-disc pr-5">
+                    {pkg.scope.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-4">
+                  <p className="text-sm text-slate-400 mb-2">الأهداف</p>
+                  <ul className="space-y-1 text-sm text-slate-200 list-disc pr-5">
+                    {pkg.goals.map((goal) => (
+                      <li key={goal}>{goal}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="mt-4 text-base font-semibold text-white">{pkg.price}</p>
+              </SectionCard>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <Megaphone className="text-emerald-300" />
+            <div>
+              <p className="text-sm text-slate-400">06</p>
+              <h2 className="text-3xl font-semibold">خطة الإعلانات المدفوعة (Google + Social)</h2>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <SectionCard>
+              <p className="text-sm text-slate-400">الميزانية المقترحة شهرياً</p>
+              <p className="text-2xl font-semibold mt-2">{adsPlan.budget.total}</p>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                {adsPlan.budget.split.map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-white/10 p-4">
+                    <p className="text-sm text-slate-400">{item.label}</p>
+                    <p className="text-base font-semibold text-white mt-1">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <SectionCard>
+                <div className="flex items-center gap-2 mb-4">
+                  <Rocket className="text-emerald-300" />
+                  <h3 className="text-xl font-semibold">خطة Google Ads</h3>
+                </div>
+                <p className="text-sm text-slate-400">نوع الحملات</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.google.campaigns.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400 mt-4">تقسيم الميزانية</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.google.budgetSplit.map((split) => (
+                    <li key={split}>{split}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400 mt-4">هيكلة الحملات</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.google.structure.map((structure) => (
+                    <li key={structure}>{structure}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400 mt-4">الأرقام المتوقعة</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.google.metrics.map((metric) => (
+                    <li key={metric}>{metric}</li>
+                  ))}
+                </ul>
+              </SectionCard>
+
+              <SectionCard>
+                <div className="flex items-center gap-2 mb-4">
+                  <Megaphone className="text-emerald-300" />
+                  <h3 className="text-xl font-semibold">خطة Social Ads</h3>
+                </div>
+                <p className="text-sm text-slate-400">الهدف الرئيسي</p>
+                <p className="text-sm text-slate-200 mt-2">{adsPlan.social.goal}</p>
+                <p className="text-sm text-slate-400 mt-4">أنواع الحملات</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.social.campaignTypes.map((type) => (
+                    <li key={type}>{type}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400 mt-4">تقسيم الميزانية</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.social.budgetSplit.map((split) => (
+                    <li key={split}>{split}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400 mt-4">الأرقام المتوقعة</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                  {adsPlan.social.metrics.map((metric) => (
+                    <li key={metric}>{metric}</li>
+                  ))}
+                </ul>
+              </SectionCard>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <Repeat className="text-emerald-300" />
+            <div>
+              <p className="text-sm text-slate-400">07</p>
+              <h2 className="text-3xl font-semibold">إستراتيجية إعادة الاستهداف والنتائج المتوقعة</h2>
+            </div>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <SectionCard>
+              <h3 className="text-xl font-semibold mb-3">الفئات والرسائل</h3>
+              <p className="text-sm text-slate-400">الفئات المستهدفة</p>
+              <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                {remarketing.audiences.map((audience) => (
+                  <li key={audience}>{audience}</li>
+                ))}
+              </ul>
+              <p className="text-sm text-slate-400 mt-4">الرسائل المستخدمة</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {remarketing.messages.map((message) => (
+                  <span key={message} className="px-4 py-2 rounded-full border border-white/10 text-xs text-white">
+                    {message}
+                  </span>
+                ))}
+              </div>
+            </SectionCard>
+            <SectionCard>
+              <h3 className="text-xl font-semibold mb-3">التوقعات خلال 90 يوماً</h3>
+              <div className="space-y-4">
+                {expectations.map((scenario) => (
+                  <div key={scenario.title} className="rounded-2xl border border-white/10 p-4 bg-white/2">
+                    <p className="text-sm text-emerald-200">{scenario.title}</p>
+                    <ul className="mt-2 space-y-1 text-sm text-slate-200 list-disc pr-5">
+                      {scenario.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <LineChart className="text-emerald-300" />
+            <div>
+              <p className="text-sm text-slate-400">08</p>
+              <h2 className="text-3xl font-semibold">مؤشرات الأداء والتشغيل</h2>
+            </div>
+          </div>
+          <SectionCard className="grid gap-6 md:grid-cols-2">
+            <div>
+              <p className="text-sm text-slate-400 mb-2">KPIs حاكمة</p>
+              <ul className="space-y-1 text-sm text-slate-200 list-disc pr-5">
+                {['Cost per Purchase', 'ROAS', 'Conversion Rate', 'Average Order Value', 'نسبة السلة المهجورة'].map((metric) => (
+                  <li key={metric}>{metric}</li>
+                ))}
+              </ul>
             </div>
             <div>
-              <p className="text-sm text-slate-400">واجهات الوصول</p>
-              <p className="text-base text-slate-200 mt-2 leading-relaxed">
-                صلاحيات الحسابات الاجتماعية والحملات المدفوعة بالإضافة إلى جهة اتصال تقنية للموقع.
-              </p>
+              <p className="text-sm text-slate-400 mb-2">ملاحظات تنفيذية</p>
+              <ul className="space-y-1 text-sm text-slate-200 list-disc pr-5">
+                {executionNotes.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
             </div>
+          </SectionCard>
+        </section>
+
+        <section className="mb-10">
+          <div className="flex items-center gap-3 mb-6">
+            <UsersRound className="text-emerald-300" />
             <div>
-              <p className="text-sm text-slate-400">دعم تنفيذي</p>
-              <p className="text-base text-slate-200 mt-2 leading-relaxed">
-                حضور أسبوعي لمدير تطوير الأعمال لاعتماد الرسائل وتأكيد العروض المخصصة قبل إرسالها.
-              </p>
+              <p className="text-sm text-slate-400">09</p>
+              <h2 className="text-3xl font-semibold">الخلاصة والتوصية</h2>
             </div>
+          </div>
+          <SectionCard>
+            <p className="text-base leading-relaxed text-slate-100">
+              التوصية المباشرة هي البدء بـ <span className="text-emerald-200 font-semibold">باقة النمو والمبيعات</span> لمدة 90 يوماً، مع مراقبة مؤشرات الأداء المذكورة، ثم الانتقال إلى باقة التوسع عند ثبات النمو. الخطة مصممة لتحقيق مبيعات فعلية وبناء قيمة طويلة المدى من خلال ضمان القطعة الصحيحة، وتفعيل المحتوى كأداة بيع، والاستثمار الذكي في الإعلانات دون الدخول في حرب أسعار.
+            </p>
           </SectionCard>
         </section>
       </div>

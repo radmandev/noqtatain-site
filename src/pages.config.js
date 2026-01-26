@@ -2,6 +2,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import HikalarabaCase24 from './pages/HikalarabaCase24';
 import __Layout from './Layout.jsx';
 
 
@@ -10,6 +11,7 @@ export const PAGES = {
     "Contact": Contact,
     "Home": Home,
     "Services": Services,
+    "hikalaraba_case24": HikalarabaCase24,
 }
 
 export const pagesConfig = {

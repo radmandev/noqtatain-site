@@ -153,37 +153,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Up Navigation */}
-      {currentSlide > 0 && (
-        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-30">
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            onClick={prevSlide}
-            className="p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-full hover:bg-white dark:hover:bg-slate-700 transition-colors shadow-lg hover:shadow-xl"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronUp className="text-slate-900 dark:text-white" size={24} />
-          </motion.button>
-        </div>
-      )}
-
-      {/* Down Navigation */}
-      {currentSlide < slides.length - 1 && (
-        <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-30">
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            onClick={nextSlide}
-            className="p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-full hover:bg-white dark:hover:bg-slate-700 transition-colors shadow-lg hover:shadow-xl"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronDown className="text-slate-900 dark:text-white" size={24} />
-          </motion.button>
-        </div>
-      )}
     </div>
   );
 }

@@ -86,3 +86,37 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  :root:not(.dark) .hk24-page .text-white {
+    @apply text-slate-900;
+  }
+
+  :root:not(.dark) .hk24-page .text-slate-200 {
+    @apply text-slate-600;
+  }
+
+  :root:not(.dark) .hk24-page .text-slate-100 {
+    @apply text-slate-700;
+  }
+
+  :root:not(.dark) .hk24-page .text-emerald-200 {
+    @apply text-emerald-600;
+  }
+
+  :root:not(.dark) .hk24-page .bg-white\/10 {
+    @apply bg-white;
+  }
+
+  :root:not(.dark) .hk24-page .bg-white\/5 {
+    @apply bg-white;
+  }
+
+  :root:not(.dark) .hk24-page .bg-white\/2 {
+    @apply bg-slate-50;
+  }
+
+  :root:not(.dark) .hk24-page .border-white\/10 {
+    @apply border-slate-200;
+  }
+}

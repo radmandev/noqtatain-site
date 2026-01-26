@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Sparkles,
   Target,
@@ -10,8 +10,14 @@ import {
   Megaphone,
   Repeat,
   LineChart,
-  UsersRound
+  UsersRound,
+  MonitorSmartphone,
+  Gauge,
+  Activity
 } from 'lucide-react';
+import MobileAuditShot from '@/assets/تجربة المستخدم في الجوال.png';
+import DesktopAuditShot from '@/assets/تجربة المستخدم في المتصفح.png';
+import SocialInsightsShot from '@/assets/تقرير التفاعل في مواقع التواصل (انستجرام).png';
 
 const situationData = [
   {
@@ -62,6 +68,77 @@ const marketingDirection = {
   messages: ['القطعة الصح من أول مرة', 'ضمانك معنا قبل وبعد الشراء', 'نساعدك تختار، مو بس نبيعك'],
   channels: ['SEO وتعزيزه بمحتوى تقني', 'Google Ads للتحويل بذكاء', 'وسائل التواصل الاجتماعي (محتوى + إعلانات)', 'البريد الإلكتروني لإعادة تنشيط العملاء', 'شراكات مع صناع محتوى سيارات']
 };
+
+const sitePreviewImages = [
+  {
+    label: 'تشخيص الأداء على الجوال',
+    description: 'الأداء 48/100 مقابل 85 SEO و96 أفضل ممارسات و89 إمكانية وصول – عنق الزجاجة الرئيسي في سرعة العرض الأولى.',
+    url: MobileAuditShot
+  },
+  {
+    label: 'تشخيص الأداء على المتصفح المكتبي',
+    description: 'الأداء يرتفع إلى 66/100 مع الحفاظ على 85 SEO و96 أفضل ممارسات و86 إمكانية وصول.',
+    url: DesktopAuditShot
+  },
+  {
+    label: 'تفاعل Instagram الحالي',
+    description: '162 منشوراً خلال 13 سنة نشاط، ومتوسط تفاعل 0.32% (أقل من المتوسط) مع 3 إعجابات لكل منشور.',
+    url: SocialInsightsShot
+  }
+];
+
+const performanceAudit = [
+  {
+    device: 'الجوال',
+    summary: 'تقارير PageSpeed تُظهر عنق زجاجة في الأداء (48/100) بالرغم من علامات ممتازة في المعايير الأخرى.',
+    metrics: [
+      { label: 'الأداء', value: '48/100' },
+      { label: 'إمكانية الوصول', value: '89/100' },
+      { label: 'أفضل الممارسات', value: '96/100' },
+      { label: 'تحسينات محركات البحث', value: '85/100' }
+    ],
+    note: 'نقترح تحسين الصور الكبيرة، ضغط ملفات JS، وتفعيل التحميل الكسول على بطاقات المنتجات.',
+    highlightClass: 'text-red-600 dark:text-red-300'
+  },
+  {
+    device: 'الكمبيوتر المكتبي',
+    summary: 'النتائج تتحسن إلى 66/100 للأداء مع ثبات في بقية المعايير.',
+    metrics: [
+      { label: 'الأداء', value: '66/100' },
+      { label: 'إمكانية الوصول', value: '86/100' },
+      { label: 'أفضل الممارسات', value: '96/100' },
+      { label: 'تحسينات محركات البحث', value: '85/100' }
+    ],
+    note: 'يُنصح بالحفاظ على جودة الصور مع توفير نسخ WebP وتقليل النصوص داخل الصور لرفع التباين.',
+    highlightClass: 'text-amber-500 dark:text-amber-300'
+  }
+];
+
+const socialMetrics = [
+  { label: 'عدد المنشورات على Instagram', value: '162 منشوراً', note: 'مخرجات كبيرة عبر 13 سنة لكن دون نمو في المتابعين.' },
+  { label: 'معدل المشاركة', value: '0.32%', note: 'أقل من المتوسط؛ المحتوى الحالي لا يحفّز التعليقات أو الحفظ.' },
+  { label: 'متوسط الإعجابات', value: '3 لكل منشور', note: 'الحاجة إلى قصص مصورة وحلول مرئية تعزز القيمة.' },
+  { label: 'متوسط التعليقات', value: '0 لكل منشور', note: 'الحوارات شبه معدومة؛ نوصي بأسئلة مباشرة ودعوات للتجربة.' },
+  { label: 'متوسط تشغيل الفيديو', value: 'غير متوفر', note: 'لا توجد Reels أو فيديوهات حديثة لقياس الأداء.' }
+];
+
+const uxInsights = [
+  {
+    title: 'الرسائل وتجربة الواجهة',
+    summary: 'الهوية احترافية لكن لا توجد دعوة فعلية واضحة تعزز وعد الضمان والخبرة.',
+    bullets: ['إضافة شريط قيمة ثابت يبين الضمان وخدمة ما بعد البيع.', 'تضمين شواهد اجتماعية أعلى الصفحة لرفع الثقة فوراً.']
+  },
+  {
+    title: 'البحث عن القطع والتصفية',
+    summary: 'البحث يعمل لكنه لا يقدم اقتراحات ذكية أو تأكيد التوافق مباشرة.',
+    bullets: ['إبراز حقل التوافق (الموديل / السنة) بجوار الأزرار الأساسية.', 'حفظ آخر عمليات البحث لتسريع العودة للمنتجات.']
+  },
+  {
+    title: 'القنوات الرقمية والتفاعل',
+    summary: 'العلامة تظهر بقوة في نتائج البحث، بينما التفاعل في Instagram / TikTok / X منخفض.',
+    bullets: ['الاستفادة من قوة SEO بإعادة توجيه الزوار إلى محتوى قصصي في السوشيال.', 'تركيز خطط النشر على حالات استخدام حقيقية وفيديوهات إصلاح قصيرة.']
+  }
+];
 
 const roadmapPhases = [
   {
@@ -139,7 +216,7 @@ const packages = [
       'تقارير أداء شهرية مختصرة.'
     ],
     goals: ['رفع معدل التحويل.', 'تجهيز المتجر للإعلانات.', 'تعزيز وضوح القيمة مقابل السعر.'],
-    price: '8,000 – 12,000 ريال / شهرياً'
+    basePrice: 6000
   },
   {
     tier: '🔵',
@@ -154,7 +231,7 @@ const packages = [
       'تحسين صفحات المنتجات الأعلى مبيعاً وتقارير تفصيلية تربط بالمبيعات.'
     ],
     goals: ['زيادة المبيعات الشهرية.', 'رفع متوسط قيمة الطلب.', 'تقليل السلة المهجورة.'],
-    price: '15,000 – 20,000 ريال / شهرياً (لا يشمل ميزانية الإعلانات)'
+    basePrice: 12000
   },
   {
     tier: '🔴',
@@ -169,9 +246,11 @@ const packages = [
       'تقارير استراتيجية واجتماعات شهرية عليا.'
     ],
     goals: ['تحقيق نمو مستدام.', 'رفع الوعي بالعلامة.', 'تثبيت هيكل العربة كمرجع موثوق.'],
-    price: '25,000 – 35,000 ريال / شهرياً (لا يشمل ميزانية الإعلانات)'
+    basePrice: 20000
   }
 ];
+
+const corporateDiscount = 0.4;
 
 const adsPlan = {
   budget: {
@@ -231,20 +310,82 @@ const executionNotes = [
 
 function SectionCard({ children, className = '' }) {
   return (
-    <div className={`rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg p-6 ${className}`}>
+    <div
+      className={`rounded-3xl border border-slate-200/70 bg-white/80 text-slate-900 shadow-lg backdrop-blur-lg p-6 dark:border-white/10 dark:bg-white/5 dark:text-white ${className}`}
+    >
       {children}
     </div>
   );
 }
 
-export default function HikalarabaCase24() {
+export default function HK24() {
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [passcode, setPasscode] = useState('');
+  const [authError, setAuthError] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = sessionStorage.getItem('hk24Access');
+      if (stored === 'granted') {
+        setIsAuthorized(true);
+      }
+    }
+  }, []);
+
+  const handleUnlock = (event) => {
+    event.preventDefault();
+    if (passcode.trim() === 'khaledabuasem24') {
+      setIsAuthorized(true);
+      setAuthError('');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('hk24Access', 'granted');
+      }
+    } else {
+      setAuthError('رمز المرور غير صحيح. حاول مرة أخرى.');
+    }
+  };
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+        <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 text-white shadow-2xl backdrop-blur">
+          <h1 className="text-2xl font-semibold mb-2">ملف هيكل العربة الداخلي</h1>
+          <p className="text-sm text-slate-300 mb-6">
+            هذه الصفحة محمية. يرجى إدخال رمز المرور للوصول إلى تفاصيل الدراسة.
+          </p>
+          <form className="space-y-4" onSubmit={handleUnlock}>
+            <div>
+              <label className="block text-sm mb-2" htmlFor="hk24-passcode">رمز المرور</label>
+              <input
+                id="hk24-passcode"
+                type="password"
+                value={passcode}
+                onChange={(e) => setPasscode(e.target.value)}
+                className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-slate-400 focus:border-violet-400 focus:outline-none"
+                placeholder="••••••••"
+                autoComplete="off"
+              />
+            </div>
+            {authError && <p className="text-sm text-red-400">{authError}</p>}
+            <button
+              type="submit"
+              className="w-full rounded-2xl bg-violet-600 py-3 text-center text-sm font-semibold text-white hover:bg-violet-500 transition"
+            >
+              فتح الصفحة
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div dir="rtl" className="min-h-screen bg-[#04060D] text-white">
+    <div dir="rtl" className="hk24-page min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 dark:bg-[#04060D] dark:bg-none dark:text-white">
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 opacity-60" style={{ background: 'radial-gradient(circle at top, rgba(16,185,129,0.25), transparent 55%)' }} />
         <div className="absolute inset-y-0 left-0 w-1/2 opacity-20" style={{ background: 'linear-gradient(120deg, rgba(56,189,248,0.4), transparent)' }} />
         <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 text-sm text-emerald-200 bg-white/10 px-4 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 text-sm text-emerald-600 bg-emerald-50 px-4 py-2 rounded-full mb-6 dark:text-emerald-200 dark:bg-white/10">
             <Sparkles size={16} />
             <span>ملف خاص · 2024</span>
           </div>
@@ -259,6 +400,100 @@ export default function HikalarabaCase24() {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 pb-20 space-y-16">
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <MonitorSmartphone className="text-emerald-300" />
+            <div>
+              <p className="text-sm text-slate-400">00</p>
+              <h2 className="text-3xl font-semibold">الوضع الحالي · واجهة المتجر وسرعته</h2>
+            </div>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <SectionCard className="space-y-4 lg:col-span-1">
+              <p className="text-sm text-slate-500 dark:text-slate-400">لقطات شاشة مرجعية (صور مؤقتة)</p>
+              <div className="space-y-6">
+                {sitePreviewImages.map((preview) => (
+                  <div key={preview.label} className="space-y-3">
+                    <div className="overflow-hidden rounded-2xl border border-slate-200/70 dark:border-white/10">
+                      <img src={preview.url} alt={`لقطة ${preview.label}`} className="w-full h-56 object-cover" />
+                    </div>
+                    <div>
+                      <p className="text-base font-semibold text-slate-900 dark:text-white">{preview.label}</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">{preview.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+            <SectionCard className="space-y-4 lg:col-span-2">
+              <div className="flex items-center gap-2">
+                <Gauge className="text-emerald-500 dark:text-emerald-300" />
+                <p className="text-sm text-slate-500 dark:text-slate-400">مطابقة القياسات الداخلية مع تقارير Google PageSpeed</p>
+              </div>
+              <div className="space-y-4">
+                {performanceAudit.map((device) => (
+                  <div key={device.device} className="rounded-2xl border border-slate-200/70 dark:border-white/10 p-4 bg-white/70 dark:bg-white/5">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">{device.device}</p>
+                        <p className="text-base font-semibold text-slate-900 dark:text-white">{device.summary}</p>
+                      </div>
+                      <span className={`text-lg font-bold ${device.highlightClass}`}>{device.metrics[0].value}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 mt-3 text-xs text-slate-600 dark:text-slate-300">
+                      {device.metrics.slice(1).map((metric) => (
+                        <div key={metric.label} className="rounded-xl border border-slate-200/60 dark:border-white/10 p-2">
+                          <p className="font-semibold text-slate-900 dark:text-white">{metric.value}</p>
+                          <p>{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">{device.note}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl border border-slate-200/70 dark:border-white/10 p-4 bg-white/80 dark:bg-white/5">
+                <p className="text-sm text-slate-500 dark:text-slate-400">القنوات الحالية وقياس التفاعل (Instagram)</p>
+                <p className="text-base font-semibold text-slate-900 dark:text-white mt-1">نشط بقوة في محركات البحث، وتفاعل منخفض على الشبكات الاجتماعية</p>
+                <ul className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                  {socialMetrics.map((metric) => (
+                    <li key={metric.label} className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="font-medium text-slate-900 dark:text-white">{metric.label}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">{metric.note}</p>
+                      </div>
+                      <span className="text-base font-semibold text-slate-900 dark:text-white">{metric.value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </SectionCard>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex items-center gap-3 mb-6">
+            <Activity className="text-emerald-300" />
+            <div>
+              <p className="text-sm text-slate-400">00.1</p>
+              <h2 className="text-3xl font-semibold">تحليل تجربة المستخدم على hikalaraba.com</h2>
+            </div>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {uxInsights.map((item) => (
+              <SectionCard key={item.title} className="space-y-3">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300">{item.summary}</p>
+                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pr-5">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </SectionCard>
+            ))}
+          </div>
+        </section>
+
         <section>
           <div className="flex items-center gap-3 mb-6">
             <Target className="text-emerald-300" />
@@ -419,7 +654,19 @@ export default function HikalarabaCase24() {
                     ))}
                   </ul>
                 </div>
-                <p className="mt-4 text-base font-semibold text-white">{pkg.price}</p>
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-slate-400">السعر القياسي</span>
+                    <span className="text-base font-semibold text-white">{pkg.basePrice.toLocaleString('ar-SA')} ريال / شهر</span>
+                  </div>
+                  <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+                    <p className="text-sm text-emerald-200 font-semibold">عرض الشركات الداخلية</p>
+                    <p className="text-xs text-slate-200 mt-1">خصم {corporateDiscount * 100}% على الاشتراك لمدة 3 أشهر فأكثر</p>
+                    <p className="text-lg font-bold text-white mt-2">
+                      {Math.round(pkg.basePrice * (1 - corporateDiscount)).toLocaleString('ar-SA')} ريال / شهر
+                    </p>
+                  </div>
+                </div>
               </SectionCard>
             ))}
           </div>

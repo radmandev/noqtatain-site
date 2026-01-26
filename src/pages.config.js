@@ -11,7 +11,7 @@ export const PAGES = {
     "Contact": Contact,
     "Home": Home,
     "Services": Services,
-    "hikalaraba_case24": HikalarabaCase24,
+    "hikalarabacase24": HikalarabaCase24,
 }
 
 export const pagesConfig = {

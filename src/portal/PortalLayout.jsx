@@ -46,7 +46,10 @@ export default function PortalLayout(){
       <div className="flex">
         {/* Sidebar */}
         <aside className="w-72 hidden md:flex flex-col h-screen sticky top-0 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-4 gap-2">
-          <div className="font-bold text-xl mb-2">بوابة نقطتين</div>
+          <div className="flex items-center gap-1 mb-2">
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">نقطتين</span>
+            <span className="text-violet-500 text-3xl font-bold">..</span>
+          </div>
           {sections.map(s=>{
             const Icon = s.icon; const active = current===s.key;
             return (

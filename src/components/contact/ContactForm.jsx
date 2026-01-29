@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,9 +43,17 @@ export default function ContactForm() {
       (option) => option.value === formData.service_interest
     )?.label;
 
-    const persistLocally = base44.entities.ContactRequest.create(formData).catch((error) => {
-      console.error('Base44 persistence failed:', error);
-    });
+    // Local persistence to emulate request logging
+    const persistLocally = (async () => {
+      try {
+        const key = 'contact_requests';
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+        existing.push({ ...formData, created_at: new Date().toISOString() });
+        localStorage.setItem(key, JSON.stringify(existing));
+      } catch (error) {
+        console.error('Local persistence failed:', error);
+      }
+    })();
 
     const syncPortal = fetch('https://portal.noqtatain.com/api/leads', {
       method: 'POST',
@@ -202,7 +209,7 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               className="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white focus:border-violet-500 focus:ring-violet-500"
-              placeholder="+966 5X XXX XXXX"
+              placeholder="05XXXXXXXX"
             />
           </div>
           <div className="space-y-2">
@@ -213,25 +220,20 @@ export default function ContactForm() {
               value={formData.company}
               onChange={handleChange}
               className="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white focus:border-violet-500 focus:ring-violet-500"
-              placeholder="شركة المثال"
+              placeholder="اسم شركتك"
             />
           </div>
         </div>
 
         <div className="space-y-2">
-          <Label className="text-slate-700 dark:text-slate-300">الخدمة المطلوبة</Label>
-          <Select
-            value={formData.service_interest}
-            onValueChange={(value) => setFormData(prev => ({ ...prev, service_interest: value }))}
-          >
+          <Label className="text-slate-700 dark:text-slate-300">الخدمة المطلوبة *</Label>
+          <Select value={formData.service_interest} onValueChange={(val) => setFormData(prev => ({ ...prev, service_interest: val }))}>
             <SelectTrigger className="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
               <SelectValue placeholder="اختر الخدمة" />
             </SelectTrigger>
             <SelectContent>
-              {serviceOptions.map(option => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
+              {serviceOptions.map(opt => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -244,31 +246,28 @@ export default function ContactForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="min-h-32 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white focus:border-violet-500 focus:ring-violet-500"
-            placeholder="أخبرنا عن مشروعك واحتياجاتك..."
+            className="rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white min-h-[120px] focus:border-violet-500 focus:ring-violet-500"
+            placeholder="اخبرنا باحتياجاتك"
           />
         </div>
 
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full h-14 bg-slate-900 dark:bg-violet-600 hover:bg-slate-800 dark:hover:bg-violet-700 text-white rounded-xl text-base font-medium transition-all duration-300 hover:shadow-lg"
-        >
+        {submitError && (
+          <p className="text-red-500 text-sm">{submitError}</p>
+        )}
+
+        <Button type="submit" className="w-full h-12 rounded-xl" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <Loader2 className="w-5 h-5 ml-2 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               جاري الإرسال...
             </>
           ) : (
             <>
-              <Send className="w-5 h-5 ml-2" />
+              <Send className="mr-2 h-4 w-4" />
               إرسال الطلب
             </>
           )}
         </Button>
-        {submitError && (
-          <p className="text-sm text-red-600 text-center">{submitError}</p>
-        )}
       </form>
     </motion.div>
   );

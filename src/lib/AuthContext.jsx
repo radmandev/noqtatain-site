@@ -1,7 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
 import { appParams } from '@/lib/app-params';
-import { createAxiosClient } from '@base44/sdk/dist/utils/axios-client';
+import { localAuth } from '@/lib/local-auth';
 
 const AuthContext = createContext();
 
@@ -21,17 +20,41 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
+
+      // Local dev: if no Base44 backend configured, skip remote checks
+      if (!appParams.appBaseUrl) {
+        try {
+          const currentUser = await localAuth.me();
+          setUser(currentUser);
+          setIsAuthenticated(true);
+        } catch {
+          setIsAuthenticated(false);
+        }
+        setIsLoadingPublicSettings(false);
+        setIsLoadingAuth(false);
+        return;
+      }
       
       // First, check app public settings (with token if available)
       // This will tell us if auth is required, user not registered, etc.
-      const appClient = createAxiosClient({
-        baseURL: `/api/apps/public`,
-        headers: {
-          'X-App-Id': appParams.appId
-        },
-        token: appParams.token, // Include token if available
-        interceptResponses: true
-      });
+      const appClient = {
+        get: async (path) => {
+          const res = await fetch(`/api/apps/public${path}`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'X-App-Id': appParams.appId || ''
+            },
+          });
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            const err = new Error(data.message || res.statusText);
+            err.status = res.status;
+            err.data = data;
+            throw err;
+          }
+          return res.json();
+        }
+      };
       
       try {
         const publicSettings = await appClient.get(`/prod/public-settings/by-id/${appParams.appId}`);
@@ -91,7 +114,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // Now check if the user is authenticated
       setIsLoadingAuth(true);
-      const currentUser = await base44.auth.me();
+      const currentUser = await localAuth.me();
       setUser(currentUser);
       setIsAuthenticated(true);
       setIsLoadingAuth(false);
@@ -115,17 +138,14 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     
     if (shouldRedirect) {
-      // Use the SDK's logout method which handles token cleanup and redirect
-      base44.auth.logout(window.location.href);
+      localAuth.logout();
     } else {
-      // Just remove the token without redirect
-      base44.auth.logout();
+      localAuth.logout();
     }
   };
 
   const navigateToLogin = () => {
-    // Use the SDK's redirectToLogin method
-    base44.auth.redirectToLogin(window.location.href);
+    localAuth.redirectToLogin();
   };
 
   return (
@@ -152,3 +172,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

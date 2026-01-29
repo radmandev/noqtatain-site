@@ -263,13 +263,13 @@ export default function Layout({ children, currentPageName }) {
                 to="/privacy-policy"
                 className="underline hover:text-violet-400 transition-colors"
               >
-                سياسة الخصوصية
+                Privacy policy
               </Link>
               <Link
                 to="/terms-of-service"
                 className="underline hover:text-violet-400 transition-colors"
               >
-                الشروط والأحكام
+                Terms of service
               </Link>
             </div>
 

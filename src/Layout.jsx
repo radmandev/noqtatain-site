@@ -38,7 +38,6 @@ export default function Layout({ children, currentPageName }) {
     { name: 'تواصل معنا', page: 'Contact' },
   ];
 
-  const isDashboard = currentPageName === 'portal' || currentPageName === 'Portal';
   return (
     <div dir="rtl" className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans transition-colors duration-300">
       <style>{`
@@ -92,23 +91,195 @@ export default function Layout({ children, currentPageName }) {
       `}</style>
 
       {/* Navigation */}
-      {!isDashboard && (
-        <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-slate-200/50 dark:border-slate-800/50">
-          ...existing code...
-        </nav>
-      )}
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-slate-200/50 dark:border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link to={createPageUrl('Home')} className="flex items-center gap-2">
+              <motion.div 
+                className="flex items-center gap-1"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <span className="text-2xl font-bold text-slate-900 dark:text-white">نقطتين</span>
+                <span className="text-violet-500 text-3xl font-bold">..</span>
+              </motion.div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.page}
+                  to={createPageUrl(link.page)}
+                  className={`text-sm font-medium transition-colors duration-200 relative group ${
+                    currentPageName === link.page
+                      ? 'text-violet-600 dark:text-violet-400'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                  {currentPageName === link.page && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute -bottom-2 left-0 right-0 h-0.5 bg-violet-600 dark:bg-violet-400"
+                    />
+                  )}
+                </Link>
+              ))}
+              
+              {/* Theme Toggle */}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <AnimatePresence mode="wait">
+                  {darkMode ? (
+                    <motion.div
+                      key="sun"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Sun size={20} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="moon"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Moon size={20} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+
+              <Link
+                to={createPageUrl('portal')}
+                className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 px-6 py-2.5 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200 hover:shadow-lg"
+              >
+                تسجيل الدخول
+              </Link>
+
+              <Link
+                to={createPageUrl('Contact')}
+                className="bg-slate-900 dark:bg-violet-600 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 dark:hover:bg-violet-700 transition-all duration-200 hover:shadow-lg"
+              >
+                احجز استشارة
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="flex items-center gap-2 md:hidden">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.button>
+              
+              <Link
+                to={createPageUrl('portal')}
+                className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors px-3 py-2"
+              >
+                دخول
+              </Link>
+              
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-slate-600 dark:text-slate-400"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800"
+            >
+              <div className="px-4 py-6 space-y-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.page}
+                    to={createPageUrl(link.page)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block text-base font-medium py-2 ${
+                      currentPageName === link.page
+                        ? 'text-violet-600 dark:text-violet-400'
+                        : 'text-slate-600 dark:text-slate-400'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <Link
+                  to={createPageUrl('Contact')}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full text-center bg-slate-900 dark:bg-violet-600 text-white px-6 py-3 rounded-full text-sm font-medium mt-4"
+                >
+                  احجز استشارة
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
 
       {/* Main Content */}
-      <main className={isDashboard ? '' : 'pt-20'}>
+      <main className="pt-20">
         {children}
       </main>
 
       {/* Footer */}
-      {!isDashboard && (
-        <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 border-t border-slate-800">
-          ...existing code...
-        </footer>
-      )}
+      <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Brand */}
+            <div className="flex items-center gap-1">
+              <span className="text-xl font-bold">نقطتين</span>
+              <span className="text-violet-400 text-2xl font-bold">..</span>
+            </div>
+
+            {/* Contact */}
+            <div className="flex items-center gap-6 text-slate-400 text-sm">
+              <span>info@noqtatain.com</span>
+              <span>966543569492</span>
+              <Link
+                to="/privacy-policy"
+                className="underline hover:text-violet-400 transition-colors"
+              >
+                سياسة الخصوصية
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="underline hover:text-violet-400 transition-colors"
+              >
+                الشروط والأحكام
+              </Link>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-slate-500 text-sm">
+              © {new Date().getFullYear()} نقطتين
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* WhatsApp Floating Button */}
       <WhatsAppButton />

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { CalendarDays, CheckSquare, FileText, Home, Inbox, LogOut, MessageSquare, Users } from 'lucide-react';
+import { CalendarDays, CheckSquare, FileText, Home, Inbox, LogOut, MessageSquare, ScrollText, Users } from 'lucide-react';
 import Dashboard from '@/portal/sections/Dashboard';
 import ContentManager from '@/portal/sections/ContentManager';
 import Leads from '@/portal/sections/Leads';
@@ -7,9 +7,11 @@ import ClientRequests from '@/portal/sections/ClientRequests';
 import SupportTickets from '@/portal/sections/SupportTickets';
 import Tasks from '@/portal/sections/Tasks';
 import Calendar from '@/portal/sections/Calendar';
+import StrategicPlan from '@/portal/sections/StrategicPlan';
 
 const sections = [
   { key: 'dashboard', label: 'لوحة التحكم', icon: Home },
+  { key: 'strategic-plan', label: 'الخطة الاستراتيجية', icon: ScrollText },
   { key: 'content', label: 'إدارة المحتوى', icon: FileText },
   { key: 'leads', label: 'العملاء المحتملين', icon: Users },
   { key: 'requests', label: 'طلبات العملاء', icon: Inbox },
@@ -37,6 +39,7 @@ export default function PortalLayout(){
       case 'tickets': return <SupportTickets/>;
       case 'tasks': return <Tasks/>;
       case 'calendar': return <Calendar/>;
+      case 'strategic-plan': return <StrategicPlan/>;
       default: return <Dashboard/>;
     }
   }

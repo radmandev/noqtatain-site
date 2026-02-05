@@ -326,6 +326,11 @@ export default function hk24() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [passcode, setPasscode] = useState('');
   const [authError, setAuthError] = useState('');
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const message = `قبول العرض المقدم في "${pageUrl}"`;
+  const encodedMessage = encodeURIComponent(message);
+  const emailLink = `mailto:?subject=${encodeURIComponent('قبول العرض')}&body=${encodedMessage}`;
+  const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -844,6 +849,29 @@ export default function hk24() {
             <p className="text-base leading-relaxed text-slate-100">
               التوصية المباشرة هي البدء بـ <span className="text-emerald-200 font-semibold">باقة النمو والمبيعات</span> لمدة 90 يوماً، مع مراقبة مؤشرات الأداء المذكورة، ثم الانتقال إلى باقة التوسع عند ثبات النمو. الخطة مصممة لتحقيق مبيعات فعلية وبناء قيمة طويلة المدى من خلال ضمان القطعة الصحيحة، وتفعيل المحتوى كأداة بيع، والاستثمار الذكي في الإعلانات دون الدخول في حرب أسعار.
             </p>
+          </SectionCard>
+        </section>
+
+        <section>
+          <SectionCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold">قبول العرض</h2>
+              <p className="text-sm text-slate-200 mt-1">اختر طريقة التواصل المناسبة لإتمام القبول.</p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href={emailLink}
+                className="rounded-2xl bg-emerald-600 px-6 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-500 transition"
+              >
+                قبول العرض عبر الإيميل
+              </a>
+              <a
+                href={whatsappLink}
+                className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-center text-sm font-semibold text-emerald-200 hover:bg-emerald-500/20 transition"
+              >
+                قبول العرض عبر الواتساب
+              </a>
+            </div>
           </SectionCard>
         </section>
       </div>

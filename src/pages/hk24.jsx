@@ -212,6 +212,7 @@ const packages = [
       'إعادة صياغة الرسائل التسويقية والتموضع.',
       'تحسين تجربة المتجر (UX/UI) مع تنفيذ جزئي سريع.',
       'إعداد أدوات التتبع (GA4، GTM، Conversion Tracking).',
+      'عدد المنشورات (١٠ منشورات + ٣ فيديوهات ريل).',
       'تقويم محتوى شهري (30 يوماً) وإدارة نشر أساسي.',
       'تقارير أداء شهرية مختصرة.'
     ],
@@ -225,13 +226,15 @@ const packages = [
     scope: [
       'كل ما في باقة التأسيس.',
       'إدارة حملات Google Ads (بحث + إعادة استهداف).',
-      'إدارة حملات سوشيال ميديا ممولة.',
+      'إدارة حملات سوشيال ميديا ممولة على ميزانية إعلانية ١٠ آلاف ريال.',
       'إنتاج محتوى فيديو تثقيفي (Reels).',
+      '١٠ منشورات إضافية للباقة.',
+      '٥ فيديوهات ريلز إضافية للباقة.',
       'تفعيل البريد الإلكتروني (إعادة تنشيط + عروض).',
       'تحسين صفحات المنتجات الأعلى مبيعاً وتقارير تفصيلية تربط بالمبيعات.'
     ],
     goals: ['زيادة المبيعات الشهرية.', 'رفع متوسط قيمة الطلب.', 'تقليل السلة المهجورة.'],
-    basePrice: 12000
+    basePrice: 10000
   },
   {
     tier: '🔴',
@@ -239,6 +242,7 @@ const packages = [
     highlight: 'مناسبة للهيمنة وبناء علامة قوية طويلة المدى',
     scope: [
       'إدارة تسويق شاملة (CMO as a Service).',
+      'إدارة الحملات الممولة غير محدودة بميزانية معينة في هذه الباقة.',
       'إدارة متقدمة لإعلانات Google وSocial.',
       'استراتيجية محتوى عميقة + كاركتر تسويقي.',
       'شراكات مع صناع محتوى سيارات.',
@@ -246,7 +250,7 @@ const packages = [
       'تقارير استراتيجية واجتماعات شهرية عليا.'
     ],
     goals: ['تحقيق نمو مستدام.', 'رفع الوعي بالعلامة.', 'تثبيت هيكل العربة كمرجع موثوق.'],
-    basePrice: 20000
+    basePrice: 18000
   }
 ];
 
@@ -322,6 +326,11 @@ export default function hk24() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [passcode, setPasscode] = useState('');
   const [authError, setAuthError] = useState('');
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const message = `قبول العرض المقدم في "${pageUrl}"`;
+  const encodedMessage = encodeURIComponent(message);
+  const emailLink = `mailto:?subject=${encodeURIComponent('قبول العرض')}&body=${encodedMessage}`;
+  const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -840,6 +849,29 @@ export default function hk24() {
             <p className="text-base leading-relaxed text-slate-100">
               التوصية المباشرة هي البدء بـ <span className="text-emerald-200 font-semibold">باقة النمو والمبيعات</span> لمدة 90 يوماً، مع مراقبة مؤشرات الأداء المذكورة، ثم الانتقال إلى باقة التوسع عند ثبات النمو. الخطة مصممة لتحقيق مبيعات فعلية وبناء قيمة طويلة المدى من خلال ضمان القطعة الصحيحة، وتفعيل المحتوى كأداة بيع، والاستثمار الذكي في الإعلانات دون الدخول في حرب أسعار.
             </p>
+          </SectionCard>
+        </section>
+
+        <section>
+          <SectionCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold">قبول العرض</h2>
+              <p className="text-sm text-slate-200 mt-1">اختر طريقة التواصل المناسبة لإتمام القبول.</p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href={emailLink}
+                className="rounded-2xl bg-emerald-600 px-6 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-500 transition"
+              >
+                قبول العرض عبر الإيميل
+              </a>
+              <a
+                href={whatsappLink}
+                className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-center text-sm font-semibold text-emerald-200 hover:bg-emerald-500/20 transition"
+              >
+                قبول العرض عبر الواتساب
+              </a>
+            </div>
           </SectionCard>
         </section>
       </div>

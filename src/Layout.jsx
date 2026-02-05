@@ -251,37 +251,58 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Footer */}
       {!isPortal && (
-        <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 border-t border-slate-800">
+        <footer className="bg-slate-900 dark:bg-slate-950 text-white py-10 border-t border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Brand */}
-              <div className="flex items-center gap-1">
-                <span className="text-xl font-bold">نقطتين</span>
-                <span className="text-violet-400 text-2xl font-bold">..</span>
+            <div className="grid gap-8 md:grid-cols-3">
+              <div>
+                <div className="flex items-center gap-1 mb-3">
+                  <span className="text-xl font-bold">نقطتين</span>
+                  <span className="text-violet-400 text-2xl font-bold">..</span>
+                </div>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  وكالة تسويق رقمي وأتمتة أعمال في السعودية. نرفع الأداء والمبيعات عبر استراتيجية واضحة، محتوى مؤثر، وإعلانات مدفوعة
+                  بقياس دقيق.
+                </p>
               </div>
 
-              {/* Contact */}
-              <div className="flex items-center gap-6 text-slate-400 text-sm">
-                <span>info@noqtatain.com</span>
-                <span>966543569492</span>
-                <Link
-                  to="/privacy-policy"
-                  className="underline hover:text-violet-400 transition-colors"
-                >
-                  Privacy policy
-                </Link>
-                <Link
-                  to="/terms-of-service"
-                  className="underline hover:text-violet-400 transition-colors"
-                >
-                  Terms of service
-                </Link>
+              <div>
+                <p className="text-sm font-semibold mb-3">روابط سريعة</p>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  {navLinks.map((link) => (
+                    <li key={link.page}>
+                      <Link to={createPageUrl(link.page)} className="hover:text-violet-400 transition-colors">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link to="/privacy-policy" className="hover:text-violet-400 transition-colors">
+                      Privacy policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/terms-of-service" className="hover:text-violet-400 transition-colors">
+                      Terms of service
+                    </Link>
+                  </li>
+                </ul>
               </div>
 
-              {/* Copyright */}
-              <div className="text-slate-500 text-sm">
-                © {new Date().getFullYear()} نقطتين
+              <div>
+                <p className="text-sm font-semibold mb-3">تواصل معنا</p>
+                <div className="space-y-2 text-sm text-slate-400">
+                  <a href="mailto:info@noqtatain.com" className="block hover:text-violet-400 transition-colors">
+                    info@noqtatain.com
+                  </a>
+                  <a href="https://wa.me/966543569492" className="block hover:text-violet-400 transition-colors">
+                    966543569492
+                  </a>
+                </div>
               </div>
+            </div>
+
+            <div className="text-slate-500 text-sm mt-8">
+              © {new Date().getFullYear()} نقطتين
             </div>
           </div>
         </footer>

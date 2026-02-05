@@ -202,6 +202,16 @@ function HeroSlide() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10"
+        >
+          نقدم خدمات التسويق الرقمي، إدارة المحتوى، والإعلانات المدفوعة مع أتمتة ذكية وتقارير أداء واضحة. نركز على زيادة المبيعات
+          وبناء حضور قوي يميز علامتك عن المنافسين في السوق السعودي.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-lg text-slate-500 dark:text-slate-500 mb-8 max-w-2xl mx-auto"
         >

@@ -4,7 +4,10 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Blog from './pages/Blog';
 import hk24 from './pages/hk24';
+import finoo from './pages/finoo';
+import hamsa from './pages/hamsa';
 import Portal from './pages/Portal.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -15,7 +18,10 @@ export const PAGES = {
     Contact,
     Home,
     Services,
+    Blog,
     hk24,
+    finoo,
+    hamsa,
     Portal,
     portal: Portal,
     PrivacyPolicy,

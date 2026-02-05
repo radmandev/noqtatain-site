@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { CalendarDays, CheckSquare, FileText, Home, Inbox, LogOut, MessageSquare, Moon, ScrollText, Sun, Users } from 'lucide-react';
+import { CalendarDays, CheckSquare, FileText, Home, Inbox, LogOut, MessageSquare, Moon, ScrollText, Sun, Users, Newspaper } from 'lucide-react';
 import Dashboard from '@/portal/sections/Dashboard';
 import ContentManager from '@/portal/sections/ContentManager';
 import Leads from '@/portal/sections/Leads';
@@ -8,11 +8,13 @@ import SupportTickets from '@/portal/sections/SupportTickets';
 import Tasks from '@/portal/sections/Tasks';
 import Calendar from '@/portal/sections/Calendar';
 import StrategicPlan from '@/portal/sections/StrategicPlan';
+import BlogManager from '@/portal/sections/BlogManager';
 
 const sections = [
   { key: 'dashboard', label: 'لوحة التحكم', icon: Home },
   { key: 'strategic-plan', label: 'الخطة الاستراتيجية', icon: ScrollText },
   { key: 'content', label: 'إدارة المحتوى', icon: FileText },
+  { key: 'blog', label: 'المدونة', icon: Newspaper },
   { key: 'leads', label: 'العملاء المحتملين', icon: Users },
   { key: 'requests', label: 'طلبات العملاء', icon: Inbox },
   { key: 'tickets', label: 'تذاكر الدعم', icon: MessageSquare },
@@ -62,6 +64,7 @@ export default function PortalLayout(){
       case 'tasks': return <Tasks/>;
       case 'calendar': return <Calendar/>;
       case 'strategic-plan': return <StrategicPlan/>;
+      case 'blog': return <BlogManager/>;
       default: return <Dashboard/>;
     }
   }

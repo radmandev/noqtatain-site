@@ -41,11 +41,9 @@ export default function ContentManager(){
       keywords,
       body,
       slug: preview.slug,
-      published: false,
     };
     if (editingId) {
-      const existing = items.find((item) => item.id === editingId);
-      updateItem('pages', editingId, { ...payload, published: existing?.published ?? false });
+      updateItem('pages', editingId, payload);
       setItems(getAll('pages'));
     } else {
       addItem('pages', payload);
@@ -66,13 +64,6 @@ export default function ContentManager(){
 
   const remove = (itemId) => {
     removeItem('pages', itemId);
-    setItems(getAll('pages'));
-  };
-
-  const togglePublish = (itemId) => {
-    const item = items.find((entry) => entry.id === itemId);
-    if (!item) return;
-    updateItem('pages', itemId, { published: !item.published });
     setItems(getAll('pages'));
   };
 
@@ -128,20 +119,9 @@ export default function ContentManager(){
                 <div>
                   <p className="text-sm text-slate-500 dark:text-slate-400">{item.pageName || 'صفحة غير مسماة'}</p>
                   <p className="font-semibold">{item.title}</p>
-                  <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                    <span>/{item.slug}</span>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] ${item.published ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}>
-                      {item.published ? 'منشور' : 'مسودة'}
-                    </span>
-                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">/{item.slug}</p>
                 </div>
                 <div className="flex gap-2">
-                  <button
-                    onClick={() => togglePublish(item.id)}
-                    className={`h-9 px-3 rounded-lg border text-sm ${item.published ? 'border-amber-200 text-amber-600' : 'border-emerald-200 text-emerald-600'}`}
-                  >
-                    {item.published ? 'إلغاء النشر' : 'نشر'}
-                  </button>
                   <button onClick={() => edit(item)} className="h-9 px-3 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 text-sm">
                     <PenLine className="w-4 h-4" /> تعديل
                   </button>

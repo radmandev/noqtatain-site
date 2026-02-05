@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ClipboardList, Target, Megaphone, Wallet, MapPin } from 'lucide-react';
 
 const objectives = [
@@ -41,71 +41,6 @@ function SectionCard({ children, className = '' }) {
 }
 
 export default function hamsa() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [passcode, setPasscode] = useState('');
-  const [authError, setAuthError] = useState('');
-  const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const message = `قبول العرض المقدم في "${pageUrl}"`;
-  const encodedMessage = encodeURIComponent(message);
-  const emailLink = `mailto:?subject=${encodeURIComponent('قبول العرض')}&body=${encodedMessage}`;
-  const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const stored = sessionStorage.getItem('hamsaAccess');
-      if (stored === 'granted') {
-        setIsAuthorized(true);
-      }
-    }
-  }, []);
-
-  const handleUnlock = (event) => {
-    event.preventDefault();
-    if (passcode.trim() === 'hamsaplan33') {
-      setIsAuthorized(true);
-      setAuthError('');
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('hamsaAccess', 'granted');
-      }
-    } else {
-      setAuthError('رمز المرور غير صحيح. حاول مرة أخرى.');
-    }
-  };
-
-  if (!isAuthorized) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
-        <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 text-white shadow-2xl backdrop-blur">
-          <h1 className="text-2xl font-semibold mb-2">ملف مطعم حمسة وتغميسة الداخلي</h1>
-          <p className="text-sm text-slate-300 mb-6">
-            هذه الصفحة محمية. يرجى إدخال رمز المرور للوصول إلى تفاصيل العرض.
-          </p>
-          <form className="space-y-4" onSubmit={handleUnlock}>
-            <div>
-              <label className="block text-sm mb-2" htmlFor="hamsa-passcode">رمز المرور</label>
-              <input
-                id="hamsa-passcode"
-                type="password"
-                value={passcode}
-                onChange={(e) => setPasscode(e.target.value)}
-                className="w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none"
-                placeholder="••••••••"
-                autoComplete="off"
-              />
-            </div>
-            {authError && <p className="text-sm text-red-400">{authError}</p>}
-            <button
-              type="submit"
-              className="w-full rounded-2xl bg-emerald-600 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-500 transition"
-            >
-              فتح الصفحة
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div dir="rtl" className="hk24-page min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 dark:bg-[#04060D] dark:bg-none dark:text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -210,35 +145,12 @@ export default function hamsa() {
             </ul>
             <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
               <p className="text-sm text-emerald-200 font-semibold">التكلفة الشهرية</p>
-              <p className="text-2xl font-bold text-white mt-2">7,000 ريال سعودي</p>
+              <p className="text-2xl font-bold text-white mt-2">5,000 ريال سعودي</p>
             </div>
             <div className="mt-6 rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
               <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">ميزانية الإعلانات المقترحة (منفصلة عن أتعاب الإدارة)</p>
               <p className="text-lg font-semibold text-slate-900 dark:text-white mt-2">من 4,000 إلى 6,000 ريال سعودي شهريًا</p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">يتم تحديدها حسب النتائج والرغبة بالتوسع</p>
-            </div>
-          </SectionCard>
-        </section>
-
-        <section>
-          <SectionCard className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold">قبول العرض</h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">اختر طريقة التواصل المناسبة لإتمام القبول.</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href={emailLink}
-                className="rounded-2xl bg-emerald-600 px-6 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-500 transition"
-              >
-                قبول العرض عبر الإيميل
-              </a>
-              <a
-                href={whatsappLink}
-                className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-center text-sm font-semibold text-emerald-700 dark:text-emerald-200 hover:bg-emerald-500/20 transition"
-              >
-                قبول العرض عبر الواتساب
-              </a>
             </div>
           </SectionCard>
         </section>

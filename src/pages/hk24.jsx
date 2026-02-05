@@ -329,8 +329,8 @@ export default function hk24() {
   const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
   const message = `قبول العرض المقدم في "${pageUrl}"`;
   const encodedMessage = encodeURIComponent(message);
-  const emailLink = `mailto:?subject=${encodeURIComponent('قبول العرض')}&body=${encodedMessage}`;
-  const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
+  const emailLink = `mailto:info@noqtatain.com?subject=${encodeURIComponent('قبول العرض')}&body=${encodedMessage}`;
+  const whatsappLink = `https://wa.me/966543569492?text=${encodedMessage}`;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

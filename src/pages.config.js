@@ -5,7 +5,6 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
-import ContentHub from './pages/ContentHub';
 import hk24 from './pages/hk24';
 import finoo from './pages/finoo';
 import hamsa from './pages/hamsa';
@@ -20,7 +19,6 @@ export const PAGES = {
     Home,
     Services,
     Blog,
-    ContentHub,
     hk24,
     finoo,
     hamsa,

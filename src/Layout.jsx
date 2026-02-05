@@ -39,7 +39,6 @@ export default function Layout({ children, currentPageName }) {
     { name: 'من نحن', page: 'About' },
     { name: 'الخدمات', page: 'Services' },
     { name: 'المدونة', page: 'Blog' },
-    { name: 'مكتبة المحتوى', page: 'ContentHub' },
     { name: 'تواصل معنا', page: 'Contact' },
   ];
 

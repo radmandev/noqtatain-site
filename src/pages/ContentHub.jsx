@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { fetchPages } from '@/portal/storage';
+import React, { useMemo } from 'react';
+import { getAll } from '@/portal/storage';
 
 export default function ContentHub() {
-  const [pages, setPages] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const load = async () => {
-      const stored = await fetchPages();
-      setPages(stored.filter((item) => item.published));
-      setLoading(false);
-    };
-    load();
+  const pages = useMemo(() => {
+    const stored = getAll('pages');
+    return stored.filter((item) => item.published);
   }, []);
 
   return (
@@ -24,11 +17,7 @@ export default function ContentHub() {
           </p>
         </header>
 
-        {loading ? (
-          <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-600 dark:text-slate-300">
-            جارٍ تحميل المحتوى...
-          </div>
-        ) : pages.length === 0 ? (
+        {pages.length === 0 ? (
           <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-600 dark:text-slate-300">
             لا توجد محتويات منشورة حتى الآن.
           </div>

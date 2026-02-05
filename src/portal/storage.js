@@ -16,6 +16,8 @@ const id = () => `${Date.now()}_${Math.random().toString(36).slice(2,8)}`;
 
 export const collections = {
   contents: 'portal_contents',
+  pages: 'portal_pages',
+  blogPosts: 'portal_blog_posts',
   leads: 'portal_leads',
   requests: 'portal_requests',
   tickets: 'portal_tickets',

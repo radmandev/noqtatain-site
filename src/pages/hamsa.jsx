@@ -210,7 +210,7 @@ export default function hamsa() {
             </ul>
             <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
               <p className="text-sm text-emerald-200 font-semibold">التكلفة الشهرية</p>
-              <p className="text-2xl font-bold text-white mt-2">5,000 ريال سعودي</p>
+              <p className="text-2xl font-bold text-white mt-2">7,000 ريال سعودي</p>
             </div>
             <div className="mt-6 rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
               <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">ميزانية الإعلانات المقترحة (منفصلة عن أتعاب الإدارة)</p>

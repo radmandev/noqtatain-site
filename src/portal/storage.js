@@ -48,3 +48,70 @@ export const removeItem = (col, itemId) => {
   const list = getAll(col).filter(i => i.id !== itemId);
   setAll(col, list);
 };
+
+export const fetchPages = async () => {
+  try {
+    const res = await fetch('/api/portal/pages');
+    if (!res.ok) {
+      throw new Error('Failed to fetch pages');
+    }
+    const pages = await res.json();
+    setAll('pages', pages);
+    return pages;
+  } catch {
+    return getAll('pages');
+  }
+};
+
+export const createPage = async (payload) => {
+  try {
+    const res = await fetch('/api/portal/pages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      throw new Error('Failed to create page');
+    }
+    const created = await res.json();
+    setAll('pages', [created, ...getAll('pages')]);
+    return created;
+  } catch {
+    return addItem('pages', payload);
+  }
+};
+
+export const updatePage = async (itemId, payload) => {
+  try {
+    const res = await fetch(`/api/portal/pages/${itemId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      throw new Error('Failed to update page');
+    }
+    const updated = await res.json();
+    const list = getAll('pages');
+    const idx = list.findIndex((item) => item.id === itemId);
+    if (idx !== -1) {
+      list[idx] = updated;
+      setAll('pages', list);
+    }
+    return updated;
+  } catch {
+    return updateItem('pages', itemId, payload);
+  }
+};
+
+export const deletePage = async (itemId) => {
+  try {
+    const res = await fetch(`/api/portal/pages/${itemId}`, { method: 'DELETE' });
+    if (!res.ok) {
+      throw new Error('Failed to delete page');
+    }
+    removeItem('pages', itemId);
+  } catch {
+    removeItem('pages', itemId);
+  }
+};

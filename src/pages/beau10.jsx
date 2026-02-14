@@ -2,141 +2,131 @@ import React from 'react';
 import {
   Sparkles,
   Store,
-  Rocket,
+  Megaphone,
   Wallet,
   Trophy,
   Handshake,
-  ShieldCheck,
   CalendarClock,
-  CircleDollarSign,
+  ShieldCheck,
   CheckCircle2,
   ArrowLeft,
 } from 'lucide-react';
 
-const proposalTitle = 'عرض شراكة استثمارية';
-const proposalSubtitle = 'لإنشاء وتشغيل المتجر الإلكتروني لمتاجر بيوتن beau10';
-
-const introText =
-  'نظرًا للنمو المتسارع لقطاع التجارة الإلكترونية في مجال مستحضرات التجميل داخل المملكة، ومع وجود ثلاثة فروع في الرياض وفرع في صبيا، يمثل إنشاء قناة بيع رقمية خطوة استراتيجية لتعزيز المبيعات وزيادة انتشار العلامة التجارية.';
-
-const principleText =
-  'لا يوجد التزام مالي مباشر على الملاك إلا من نتائج فعلية، ويتحقق العائد للطرفين من نجاح المشروع.';
-
-const foundationItems = [
-  'إنشاء المتجر الإلكتروني بالكامل.',
-  'الإعداد التقني وربط بوابات الدفع.',
-  'إدارة الحملات التسويقية.',
-  'تمويل الإعلانات في مرحلة الإطلاق.',
-  'إدارة المنصات الرقمية المرتبطة بالمشروع.',
+const investmentItems = [
+  'إنشاء المتجر الإلكتروني بالكامل',
+  'الإعداد التقني وربط بوابات الدفع',
+  'إدارة الحملات التسويقية',
+  'تمويل الإعلانات في مرحلة الإطلاق',
+  'إدارة المنصات الرقمية المرتبطة بالمشروع',
 ];
 
 const recoveryItems = [
-  'تكلفة الإعلانات الرقمية (Meta – Google – TikTok – Snapchat وغيرها).',
-  'رسوم بوابات الدفع الإلكتروني.',
-  'تكاليف الشحن والتوصيل.',
-  'تكلفة إنتاج المحتوى الإعلاني (تصوير – تصميم – مونتاج).',
-  'تكلفة الأدوات والمنصات التسويقية المستخدمة ضمن الحملات (اشتراكات أنظمة – أدوات تحليل – منصات بريد إلكتروني – أدوات CRM).',
-  'تكلفة الوسائل التسويقية الحسية المرتبطة بالحملات (مطبوعات – تغليف دعائي – بروشورات – عينات مجانية – مواد ترويجية).',
-  'أي مصروفات تسويقية مباشرة يتم اعتمادها ضمن خطة الحملة.',
+  'تكلفة الإعلانات الرقمية (Meta – Google – TikTok – Snapchat وغيرها)',
+  'رسوم بوابات الدفع الإلكتروني',
+  'تكاليف الشحن والتوصيل',
+  'تكلفة إنتاج المحتوى الإعلاني (تصوير – تصميم – مونتاج)',
+  'تكلفة الأدوات والمنصات التسويقية المستخدمة ضمن الحملات (اشتراكات أنظمة – أدوات تحليل – منصات بريد إلكتروني – أدوات CRM)',
+  'تكلفة الوسائل التسويقية الحسية المرتبطة بالحملات (مطبوعات – تغليف دعائي – بروشورات – عينات مجانية – مواد ترويجية)',
+  'أي مصروفات تسويقية مباشرة يتم اعتمادها ضمن خطة الحملة',
+];
+
+const partnerDuties = [
+  'إدارة الحملات وتحسين الأداء',
+  'تقديم تقارير شهرية مفصلة',
+  'تطوير القناة الرقمية بشكل مستمر',
+];
+
+const ownersDuties = [
+  'توفير مخزون كافٍ',
+  'سرعة تجهيز الطلبات',
+  'الالتزام بسياسة تسعير موحدة',
+  'دعم العمليات اللوجستية',
 ];
 
 const sections = [
   {
-    order: 'أولاً',
-    title: 'المقدمة',
     icon: Store,
-    body:
-      `${introText} يعتمد هذا المقترح على نموذج شراكة استثمارية يتحمل فيه الشريك التشغيلي المخاطرة التشغيلية والتسويقية، دون التزام مالي مباشر على الملاك إلا من نتائج فعلية.`,
+    title: 'المقدمة',
+    content:
+      'نظرًا للنمو المتسارع لقطاع التجارة الإلكترونية في مجال مستحضرات التجميل داخل المملكة، ومع وجود ثلاثة فروع في الرياض وفرع في صبيا، يمثل إنشاء قناة بيع رقمية خطوة استراتيجية لتعزيز المبيعات وزيادة انتشار العلامة التجارية.',
   },
   {
-    order: 'ثانياً',
+    icon: Megaphone,
     title: 'مرحلة الاستثمار والتأسيس',
-    icon: Rocket,
-    body:
-      'يتحمل الشريك التشغيلي جميع بنود التأسيس والإطلاق التسويقي، ولا يتحمل الملاك أي تكاليف تأسيس أو تسويق في هذه المرحلة.',
-    list: foundationItems,
+    content: 'يتحمل الشريك التشغيلي كامل التأسيس والتشغيل التسويقي دون أي تكاليف مباشرة على الملاك في هذه المرحلة.',
+    list: investmentItems,
   },
   {
-    order: 'ثالثاً',
-    title: 'آلية استرداد التكاليف',
     icon: Wallet,
-    body:
-      'تُخصم المصروفات التشغيلية والتسويقية التالية من إجمالي المبيعات الرقمية حتى استرداد كامل المصروفات، ويتم توثيقها بتقارير مالية شهرية واضحة.',
+    title: 'آلية استرداد التكاليف',
+    content: 'يتم خصم المصروفات من إجمالي المبيعات الرقمية حتى استرداد كامل التكاليف، مع توثيق مالي شهري واضح.',
     list: recoveryItems,
   },
   {
-    order: 'رابعاً',
-    title: 'مكافأة التأسيس',
     icon: Trophy,
-    body:
-      'عند تغطية جميع المصروفات وتحقيق فائض قدره 20,000 ريال، يتم دفع مبلغ 20,000 ريال كمكافأة تأسيس وتشغيل ناجح للمشروع.',
-    callout: '20,000 ريال فائض = 20,000 ريال مكافأة تأسيس',
+    title: 'مكافأة التأسيس',
+    content:
+      'عند تغطية جميع المصروفات وتحقيق فائض قدره 20,000 ريال، يتم دفع 20,000 ريال كمكافأة تأسيس وتشغيل ناجح للمشروع.',
+    highlight: '20,000 ريال فائض → 20,000 ريال مكافأة تأسيس',
   },
   {
-    order: 'خامساً',
-    title: 'نسبة الشراكة التشغيلية',
     icon: Handshake,
-    body:
-      'بعد مرحلة التأسيس، يتم احتساب نسبة الشراكة من إجمالي المبيعات الرقمية للمتجر الإلكتروني فقط، ولا تشمل مبيعات الفروع أو أي قنوات بيع أخرى. النسب المعتمدة: ٣٠٪ في السنة الأولى، ٢٥٪ في السنة الثانية، و٢٠٪ في السنة الثالثة وبعدها.',
+    title: 'نسبة الشراكة التشغيلية',
+    content:
+      'بعد مرحلة التأسيس، تحتسب نسبة الشراكة من إجمالي مبيعات المتجر الإلكتروني فقط (دون الفروع أو القنوات الأخرى).',
     table: [
-      ['السنة الأولى', '٣٠٪'],
-      ['السنة الثانية', '٢٥٪'],
-      ['السنة الثالثة وبعدها', '٢٠٪'],
+      ['السنة الأولى', '15%'],
+      ['السنة الثانية', '12%'],
+      ['السنة الثالثة', '10%'],
     ],
   },
   {
-    order: 'سادساً',
-    title: 'التزامات الطرفين',
     icon: ShieldCheck,
+    title: 'التزامات الطرفين',
     duties: {
-      partner: ['إدارة الحملات وتحسين الأداء.', 'تقديم تقارير شهرية مفصلة.', 'تطوير القناة الرقمية بشكل مستمر.'],
-      owners: ['توفير مخزون كافٍ.', 'سرعة تجهيز الطلبات.', 'الالتزام بسياسة تسعير موحدة.', 'دعم العمليات اللوجستية.'],
+      partner: partnerDuties,
+      owners: ownersDuties,
     },
   },
   {
-    order: 'سابعاً',
-    title: 'مدة الشراكة',
     icon: CalendarClock,
-    body:
-      'مدة الاتفاق ثلاث سنوات، مع حق الإدارة الحصرية للمتجر الإلكتروني خلال مدة الشراكة.',
-    callout: 'مدة الاتفاق: 3 سنوات (إدارة حصرية للقناة الرقمية)',
-  },
-  {
-    order: 'ثامناً',
-    title: 'مبدأ الاتفاق',
-    icon: CircleDollarSign,
-    body: `تعتمد هذه الشراكة على مبدأ: “${principleText}”`,
+    title: 'مدة الشراكة',
+    content: 'مدة الاتفاق ثلاث سنوات، مع حق الإدارة الحصرية للمتجر الإلكتروني طوال مدة الشراكة.',
+    highlight: 'مدة الاتفاق: 3 سنوات (إدارة حصرية)',
   },
 ];
 
-function ProposalSection({ section }) {
+const SectionCard = ({ section }) => {
   const Icon = section.icon;
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span className="rounded-xl bg-violet-100 p-2 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300">
-            <Icon size={22} />
-          </span>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">{section.title}</h2>
+      <div className="mb-4 flex items-center gap-3">
+        <div className="rounded-xl bg-violet-100 p-2 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300">
+          <Icon size={22} />
         </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-sm font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-          {section.order}
-        </span>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white">{section.title}</h2>
       </div>
 
-      {section.body && <p className="leading-8 text-slate-600 dark:text-slate-300">{section.body}</p>}
+      {section.content && (
+        <p className="leading-8 text-slate-600 dark:text-slate-300">{section.content}</p>
+      )}
 
       {section.list && (
         <ul className="mt-4 space-y-3">
           {section.list.map((item) => (
             <li key={item} className="flex items-start gap-2 text-slate-700 dark:text-slate-200">
-              <CheckCircle2 className="mt-0.5 shrink-0 text-violet-600 dark:text-violet-400" size={18} />
+              <CheckCircle2 className="mt-0.5 shrink-0 text-violet-600" size={18} />
               <span>{item}</span>
             </li>
           ))}
         </ul>
+      )}
+
+      {section.highlight && (
+        <div className="mt-4 rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white dark:bg-violet-700/80">
+          {section.highlight}
+        </div>
       )}
 
       {section.table && (
@@ -144,9 +134,9 @@ function ProposalSection({ section }) {
           <table className="w-full text-right">
             <tbody>
               {section.table.map(([year, ratio]) => (
-                <tr key={year} className="border-b border-slate-200 last:border-b-0 dark:border-slate-700">
+                <tr key={year} className="border-b border-slate-200 last:border-0 dark:border-slate-700">
                   <td className="bg-slate-50 px-4 py-3 font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{year}</td>
-                  <td className="px-4 py-3 text-lg font-extrabold text-violet-700 dark:text-violet-300">{ratio}</td>
+                  <td className="px-4 py-3 text-lg font-bold text-violet-700 dark:text-violet-300">{ratio}</td>
                 </tr>
               ))}
             </tbody>
@@ -155,7 +145,7 @@ function ProposalSection({ section }) {
       )}
 
       {section.duties && (
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
           <div className="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/70">
             <h3 className="mb-3 font-bold text-slate-900 dark:text-white">التزامات الشريك التشغيلي</h3>
             <ul className="space-y-2 text-slate-700 dark:text-slate-200">
@@ -181,45 +171,40 @@ function ProposalSection({ section }) {
           </div>
         </div>
       )}
-
-      {section.callout && (
-        <div className="mt-4 rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white dark:bg-violet-700/80">
-          {section.callout}
-        </div>
-      )}
     </section>
   );
-}
+};
 
-export default function Beau10() {
+export default function beau10() {
   return (
-    <div
-      dir="rtl"
-      className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-violet-50 py-12 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900"
-    >
+    <div dir="rtl" className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-violet-50 py-12 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <header className="mb-8 rounded-3xl border border-violet-200 bg-white/90 p-8 shadow-sm backdrop-blur dark:border-violet-700/50 dark:bg-slate-900/90">
           <p className="mb-2 inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-sm font-semibold text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
             <Sparkles size={16} />
-            {proposalTitle}
+            عرض شراكة استثمارية
           </p>
-
           <h1 className="text-3xl font-extrabold leading-tight text-slate-900 dark:text-white md:text-4xl">
-            {proposalSubtitle}
+            إنشاء وتشغيل المتجر الإلكتروني
+            <span className="block text-violet-700 dark:text-violet-300">لمتاجر بيوتن beau10</span>
           </h1>
-
-          <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-600 dark:text-slate-300">{introText}</p>
-
-          <div className="mt-5 rounded-xl border border-violet-200 bg-violet-50 p-4 text-violet-900 dark:border-violet-700/60 dark:bg-violet-900/20 dark:text-violet-200">
-            <span className="font-bold">المبدأ الحاكم:</span> {principleText}
-          </div>
+          <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+            تعتمد هذه الشراكة على مبدأ: «لا يوجد التزام مالي مباشر على الملاك إلا من نتائج فعلية، ويتحقق العائد للطرفين من نجاح المشروع».
+          </p>
         </header>
 
         <div className="grid gap-5">
           {sections.map((section) => (
-            <ProposalSection key={section.title} section={section} />
+            <SectionCard key={section.title} section={section} />
           ))}
         </div>
+
+        <footer className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">مبدأ الاتفاق</h2>
+          <p className="mt-3 text-lg leading-8 text-slate-700 dark:text-slate-200">
+            شراكة تشغيلية تقوم على الأداء الفعلي، وتربط النمو في المبيعات الرقمية بعائد عادل ومستدام لجميع الأطراف.
+          </p>
+        </footer>
       </div>
     </div>
   );

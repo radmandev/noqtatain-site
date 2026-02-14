@@ -206,25 +206,26 @@ const kpis = ['زيادة المبيعات بنسبة 30%', 'رفع معدل ا�
 const packages = [
   {
     tier: '🟢',
-    name: 'باقة التأسيس والتحسين (Foundation)',
-    highlight: 'مناسبة للانطلاق الصحيح دون مخاطرة عالية',
+    name: 'باقة المحتوى والإدارة (Resale)',
+    highlight: 'باقة جاهزة لإعادة البيع بسعر ثابت وواضح',
     scope: [
-      'إعادة صياغة الرسائل التسويقية والتموضع.',
-      'تحسين تجربة المتجر (UX/UI) مع تنفيذ جزئي سريع.',
-      'إعداد أدوات التتبع (GA4، GTM، Conversion Tracking).',
-      'عدد المنشورات (١٠ منشورات + ٣ فيديوهات ريل).',
-      'تقويم محتوى شهري (30 يوماً) وإدارة نشر أساسي.',
-      'تقارير أداء شهرية مختصرة.'
+      'المنصات: Instagram، Snapchat.',
+      '12 تصميم صورة شهرياً.',
+      '4 فيديوهات قصيرة شهرياً.',
+      '12 Stories شهرياً.',
+      'كتابة المحتوى بما يتوافق مع الهوية.',
+      'جدولة النشر والمتابعة التشغيلية.',
+      'تقرير شهري مختصر.'
     ],
-    goals: ['رفع معدل التحويل.', 'تجهيز المتجر للإعلانات.', 'تعزيز وضوح القيمة مقابل السعر.'],
-    basePrice: 6000
+    goals: ['تنظيم الحضور الرقمي.', 'استمرارية النشر بجودة ثابتة.', 'تقديم باقة قابلة لإعادة البيع.'],
+    basePrice: 4500
   },
   {
     tier: '🔵',
     name: 'باقة النمو والمبيعات (Growth)',
     highlight: 'مناسبة لتحقيق نمو فعلي ورفع المبيعات',
     scope: [
-      'كل ما في باقة التأسيس.',
+      'كل ما في باقة المحتوى والإدارة.',
       'إدارة حملات Google Ads (بحث + إعادة استهداف).',
       'إدارة حملات سوشيال ميديا ممولة على ميزانية إعلانية 15 ألف ريال كحد أقصى.',
       'إنتاج محتوى فيديو تثقيفي (Reels).',
@@ -254,7 +255,6 @@ const packages = [
   }
 ];
 
-const corporateDiscount = 0.4;
 
 const adsPlan = {
   budget: {
@@ -663,17 +663,10 @@ export default function hk24() {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-4 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-400">السعر القياسي</span>
-                    <span className="text-base font-semibold text-white">{pkg.basePrice.toLocaleString('ar-SA')} ريال / شهر</span>
-                  </div>
+                <div className="mt-4">
                   <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-                    <p className="text-sm text-emerald-200 font-semibold">عرض الشركات الداخلية</p>
-                    <p className="text-xs text-slate-200 mt-1">خصم {corporateDiscount * 100}% على الاشتراك لمدة 3 أشهر فأكثر</p>
-                    <p className="text-lg font-bold text-white mt-2">
-                      {Math.round(pkg.basePrice * (1 - corporateDiscount)).toLocaleString('ar-SA')} ريال / شهر
-                    </p>
+                    <p className="text-sm text-emerald-200 font-semibold">سعر البيع</p>
+                    <p className="text-lg font-bold text-white mt-2">{pkg.basePrice.toLocaleString('ar-SA')} ريال / شهر</p>
                   </div>
                 </div>
               </SectionCard>

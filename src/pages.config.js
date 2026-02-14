@@ -11,6 +11,7 @@ import hamsa from './pages/hamsa';
 import Portal from './pages/Portal.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import beau10 from './pages/beau10';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -26,6 +27,7 @@ export const PAGES = {
     portal: Portal,
     PrivacyPolicy,
     TermsOfService,
+    beau10,
     'privacy-policy': PrivacyPolicy,
     'terms-of-service': TermsOfService,
 };

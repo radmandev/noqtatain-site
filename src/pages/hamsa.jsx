@@ -16,7 +16,7 @@ const socialScope = [
   'تحسين الحسابات (Bio – Highlights – Hashtags).'
 ];
 
-const socialContent = ['16 منشور صور', '8 ستوري', '8 فيديو قصير (Reels / TikTok)'];
+const socialContent = ['12 تصميم صورة', '4 فيديوهات قصيرة', '12 Stories'];
 
 const adsScope = [
   'إعداد استراتيجية إعلانية مناسبة لأهداف المطعم.',
@@ -28,7 +28,7 @@ const adsScope = [
 
 const adsGoals = ['زيادة الوعي بالعلامة التجارية.', 'زيادة التفاعل.', 'زيادة الطلبات والوصول للفرعين.'];
 
-const feeItems = ['إدارة حسابات التواصل الاجتماعي', 'إنشاء المحتوى', 'إدارة الحملات الإعلانية'];
+const feeItems = ['إدارة حسابات التواصل الاجتماعي', 'إنشاء المحتوى', 'كتابة المحتوى', 'جدولة النشر', 'التقارير'];
 
 function SectionCard({ children, className = '' }) {
   return (
@@ -155,7 +155,7 @@ export default function hamsa() {
                 <h3 className="text-xl font-semibold">إدارة حسابات التواصل الاجتماعي</h3>
               </div>
               <p className="text-sm text-slate-400">المنصات</p>
-              <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">Instagram، TikTok</p>
+              <p className="text-sm text-slate-700 dark:text-slate-200 mt-1">Instagram، Snapchat</p>
               <p className="text-sm text-slate-400 mt-4">يشمل</p>
               <ul className="mt-2 space-y-2 text-sm text-slate-700 dark:text-slate-200 list-disc pr-5">
                 {socialScope.map((item) => (
@@ -209,13 +209,13 @@ export default function hamsa() {
               ))}
             </ul>
             <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-              <p className="text-sm text-emerald-200 font-semibold">التكلفة الشهرية</p>
-              <p className="text-2xl font-bold text-white mt-2">7,000 ريال سعودي</p>
+              <p className="text-sm text-emerald-200 font-semibold">سعر البيع</p>
+              <p className="text-2xl font-bold text-white mt-2">4,500 ريال سعودي</p>
             </div>
             <div className="mt-6 rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-              <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">ميزانية الإعلانات المقترحة (منفصلة عن أتعاب الإدارة)</p>
-              <p className="text-lg font-semibold text-slate-900 dark:text-white mt-2">من 4,000 إلى 6,000 ريال سعودي شهريًا</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">يتم تحديدها حسب النتائج والرغبة بالتوسع</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">التقارير</p>
+              <p className="text-lg font-semibold text-slate-900 dark:text-white mt-2">تقرير شهري مختصر</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">سعر البيع المعتمد ضمن باقات الشراكة الخارجية</p>
             </div>
           </SectionCard>
         </section>

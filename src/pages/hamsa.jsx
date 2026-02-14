@@ -209,13 +209,13 @@ export default function hamsa() {
               ))}
             </ul>
             <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-              <p className="text-sm text-emerald-200 font-semibold">التكلفة الشهرية</p>
+              <p className="text-sm text-emerald-200 font-semibold">سعر البيع</p>
               <p className="text-2xl font-bold text-white mt-2">4,500 ريال سعودي</p>
             </div>
             <div className="mt-6 rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
               <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">التقارير</p>
               <p className="text-lg font-semibold text-slate-900 dark:text-white mt-2">تقرير شهري مختصر</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">⬅️ لإعادة البيع بـ 4,500 ريال</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">سعر البيع المعتمد ضمن باقات الشراكة الخارجية</p>
             </div>
           </SectionCard>
         </section>

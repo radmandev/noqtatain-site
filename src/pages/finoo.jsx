@@ -238,12 +238,12 @@ export default function finoo() {
             </div>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
-                <p className="text-sm text-emerald-200 font-semibold">إجمالي الميزانية الشهرية (أجور)</p>
+                <p className="text-sm text-emerald-200 font-semibold">سعر البيع</p>
                 <p className="text-2xl font-bold text-white mt-2">4,500 ريال سعودي</p>
               </div>
               <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">سعر إعادة البيع</p>
-                <p className="text-2xl font-bold text-slate-900 dark:text-white mt-2">⬅️ لإعادة البيع بـ 4,500 ريال</p>
+                <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">سعر البيع</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white mt-2">4,500 ريال سعودي</p>
               </div>
             </div>
           </SectionCard>

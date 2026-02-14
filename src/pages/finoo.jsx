@@ -8,13 +8,12 @@ const goals = [
 ];
 
 const socialManagement = {
-  platforms: ['Instagram', 'TikTok'],
-  monthlyOutput: ['12 منشورات', '4 Reels', '4 ستوري'],
+  platforms: ['Instagram', 'Snapchat'],
+  monthlyOutput: ['12 تصميم صورة', '4 فيديوهات قصيرة', '12 Stories'],
   contentTypes: [
-    'صور المنتجات: عرض وجباتكم الخاصة.',
-    'محتوى تفاعلي: مسابقات، استطلاعات، وأسئلة.',
-    'عروض خاصة: نشر العروض الترويجية.',
-    'محتوى تعليمي: فيديوهات تحضيرات الوجبات.'
+    'كتابة المحتوى بما يتناسب مع هوية العلامة.',
+    'جدولة النشر وفق خطة شهرية ثابتة.',
+    'متابعة الأداء ورفع تقرير شهري مختصر.'
   ]
 };
 
@@ -31,9 +30,10 @@ const influencers = {
 };
 
 const financialRows = [
-  { service: 'إدارة حسابات منصات التواصل الاجتماعي', budget: '2,000 ريال سعودي' },
-  { service: 'إعداد وإدارة الحملات الإعلانية', budget: '3,000 ريال سعودي' },
-  { service: 'الميزانية الترويجية المُقترحة', budget: '5,000 ريال سعودي' }
+  { service: 'الإدارة', budget: 'إدارة حسابات المنصات' },
+  { service: 'المحتوى', budget: '12 تصميم صورة + 4 فيديوهات قصيرة + 12 Stories' },
+  { service: 'الإدارة التشغيلية', budget: 'كتابة المحتوى + جدولة النشر' },
+  { service: 'التقارير', budget: 'تقرير شهري مختصر' }
 ];
 
 function SectionCard({ children, className = '' }) {
@@ -239,11 +239,11 @@ export default function finoo() {
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
                 <p className="text-sm text-emerald-200 font-semibold">إجمالي الميزانية الشهرية (أجور)</p>
-                <p className="text-2xl font-bold text-white mt-2">5,000 ريال سعودي</p>
+                <p className="text-2xl font-bold text-white mt-2">4,500 ريال سعودي</p>
               </div>
               <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">مُقترح ميزانية إعلانية</p>
-                <p className="text-2xl font-bold text-slate-900 dark:text-white mt-2">5,000 ريال سعودي</p>
+                <p className="text-sm text-slate-500 dark:text-slate-300 font-semibold">سعر إعادة البيع</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white mt-2">⬅️ لإعادة البيع بـ 4,500 ريال</p>
               </div>
             </div>
           </SectionCard>

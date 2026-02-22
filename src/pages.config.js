@@ -7,6 +7,7 @@ import Services from './pages/Services';
 import Blog from './pages/Blog';
 import hk24 from './pages/hk24';
 import finoo from './pages/finoo';
+import finoogo from './pages/finoogo';
 import hamsa from './pages/hamsa';
 import Portal from './pages/Portal.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -22,6 +23,7 @@ export const PAGES = {
     Blog,
     hk24,
     finoo,
+    finoogo,
     hamsa,
     Portal,
     portal: Portal,

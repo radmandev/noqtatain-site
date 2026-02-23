@@ -7,7 +7,10 @@ import Services from './pages/Services';
 import Blog from './pages/Blog';
 import hk24 from './pages/hk24';
 import finoo from './pages/finoo';
+import finoogo from './pages/finoogo';
 import hamsa from './pages/hamsa';
+import hamsago from './pages/hamsago';
+import hikalgo from './pages/hikalgo';
 import Portal from './pages/Portal.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
@@ -22,7 +25,12 @@ export const PAGES = {
     Blog,
     hk24,
     finoo,
+    finoogo,
     hamsa,
+    hamsago,
+    'hamsa-go': hamsago,
+    hikalgo,
+    'hikalplan': hikalgo,
     Portal,
     portal: Portal,
     PrivacyPolicy,

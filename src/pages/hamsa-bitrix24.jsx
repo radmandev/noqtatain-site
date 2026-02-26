@@ -232,7 +232,7 @@ export default function HamsaBitrix24() {
             <div className="space-y-4">
               <div className="rounded-2xl border border-emerald-400/40 bg-emerald-50 p-4 dark:bg-emerald-500/10">
                 <p className="text-sm text-slate-500 dark:text-slate-300">رسوم تنفيذ النظام (مرة واحدة)</p>
-                <p className="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-300">18,500 ريال</p>
+                <p className="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-300">٩٠٠٠ ريال</p>
               </div>
               <div className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
                 <p className="text-sm text-slate-500 dark:text-slate-300">الدعم الفني الشهري (اختياري)</p>

@@ -1,19 +1,19 @@
 import React from 'react';
 import {
   ArrowLeft,
+  BarChart3,
+  CalendarCheck,
   CheckCircle2,
   ClipboardCheck,
+  FileText,
   MessageSquareText,
   ShieldCheck,
+  Sparkles,
   TimerReset,
   UserCog,
   Users,
-  Wrench,
-  Workflow,
-  CalendarCheck,
-  FileText,
-  Sparkles,
-  BarChart3
+  Wallet,
+  Workflow
 } from 'lucide-react';
 
 const painPoints = [
@@ -76,6 +76,19 @@ const whyUs = [
   'دعم فني مستمر لضمان الاستقرار والتطوير.'
 ];
 
+const financialItems = [
+  'تحليل العمليات وإعداد الهيكل الإداري داخل Bitrix24.',
+  'إعداد النماذج الإلكترونية وسير الموافقات الآلية.',
+  'ربط واتساب الرسمي وتوزيع المحادثات والأرشفة.',
+  'تفعيل نظام الحضور والانصراف وإخراج التقارير.',
+  'تدريب فريق الإدارة والموظفين + دعم ما بعد الإطلاق.'
+];
+
+const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+const approvalText = encodeURIComponent(`أوافق على العرض الفني والمالي لنظام إدارة موظفي مطعم حمسة وتغميسة Bitrix24\nرابط العرض: ${pageUrl}`);
+const emailApproval = `mailto:info@noqtatain.com?subject=${encodeURIComponent('موافقة على العرض الفني والمالي - حمسة وتغميسة')}&body=${approvalText}`;
+const whatsappApproval = `https://wa.me/966543569492?text=${approvalText}`;
+
 const CTAButton = ({ href, children, secondary = false }) => (
   <a
     href={href}
@@ -97,17 +110,17 @@ export default function HamsaBitrix24() {
         <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg dark:border-white/10 dark:bg-white/5">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1 text-sm font-semibold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
             <Sparkles className="h-4 w-4" />
-            نظام إدارة موظفي مطعم حمسة وتغميسة Bitrix24
+            عرض فني ومالي
           </div>
-          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">حوّل إدارة مطعمك إلى نظام رقمي متكامل</h1>
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl">نظام إدارة موظفي مطعم حمسة وتغميسة Bitrix24</h1>
+          <p className="mt-3 text-lg font-semibold text-emerald-600 dark:text-emerald-300">حول إدارة منشأتك إلى نظام رقمي متكامل</p>
           <p className="mt-4 max-w-3xl text-slate-600 dark:text-slate-300">
             تنفيذ نظام Bitrix24 لإدارة الموظفين، الطلبات، الحضور، والصيانة من منصة واحدة.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <CTAButton href="#contact">اطلب عرض سعر</CTAButton>
-            <CTAButton href="#contact" secondary>
-              احجز استشارة مجانية
-            </CTAButton>
+          <div className="mt-6 grid gap-3 text-sm sm:grid-cols-3">
+            <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">عدد الموظفين المستهدف: 50 موظف</div>
+            <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">مدة التنفيذ: 3 - 4 أسابيع</div>
+            <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">صلاحية العرض: 15 يوم من تاريخ الإصدار</div>
           </div>
         </section>
 
@@ -128,7 +141,7 @@ export default function HamsaBitrix24() {
         <section className="space-y-5 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center gap-3">
             <ClipboardCheck className="h-6 w-6 text-emerald-500" />
-            <h2 className="text-2xl font-bold">الحل الذي نقدمه</h2>
+            <h2 className="text-2xl font-bold">العرض الفني</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {solutionBlocks.map(({ icon: Icon, title, points }) => (
@@ -199,36 +212,59 @@ export default function HamsaBitrix24() {
           </article>
         </section>
 
-        <section id="contact" className="rounded-3xl border border-emerald-300 bg-emerald-50 p-8 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
+          <div className="mb-5 flex items-center gap-3">
+            <Wallet className="h-6 w-6 text-emerald-500" />
+            <h2 className="text-2xl font-bold">العرض المالي</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h2 className="text-2xl font-bold">ابدأ الآن في تحويل مطعمك إلى نظام إداري احترافي</h2>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-200">
-                جاهزون لتنفيذ نظام متكامل يضبط العمليات اليومية ويرفع كفاءة الإدارة داخل المطعم.
-              </p>
+              <p className="text-sm text-slate-500 dark:text-slate-300">يشمل التنفيذ</p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                {financialItems.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <CTAButton href="https://wa.me/966543569492?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D9%85%D8%AE%D8%B5%D8%B5%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20Bitrix24%20%D9%84%D9%85%D8%B7%D8%B9%D9%85%20%D8%AD%D9%85%D8%B3%D8%A9%20%D9%88%D8%AA%D8%BA%D9%85%D9%8A%D8%B3%D8%A9">
-                احصل على عرض مخصص
-              </CTAButton>
-              <CTAButton href="/Contact" secondary>
-                تواصل معنا الآن
-              </CTAButton>
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-emerald-400/40 bg-emerald-50 p-4 dark:bg-emerald-500/10">
+                <p className="text-sm text-slate-500 dark:text-slate-300">رسوم تنفيذ النظام (مرة واحدة)</p>
+                <p className="mt-2 text-3xl font-bold text-emerald-700 dark:text-emerald-300">٩٠٠٠ ريال</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+                <p className="text-sm text-slate-500 dark:text-slate-300">الدعم الفني الشهري (اختياري)</p>
+                <p className="mt-2 text-2xl font-semibold">1,500 ريال / شهر</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+                <p className="text-sm text-slate-500 dark:text-slate-300">تكاليف الاشتراكات السنوية</p>
+                <ul className="mt-2 space-y-1 text-sm text-slate-700 dark:text-slate-200">
+                  <li>اشتراك Bitrix24 السنوي: 8,960 ريال</li>
+                  <li>دمج واتساب الرسمي السنوي: 2,480 ريال</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-slate-200 p-4 text-xs text-slate-500 dark:border-white/10 dark:text-slate-300">
+                الأسعار أعلاه تمثل تكاليف الاشتراك السنوية، وتُضاف على رسوم تنفيذ النظام.
+              </div>
             </div>
           </div>
-          <div className="mt-5 grid gap-3 text-sm sm:grid-cols-3">
-            <div className="rounded-2xl border border-emerald-300/50 bg-white/60 p-3 dark:border-emerald-500/30 dark:bg-white/10">
-              <FileText className="mb-2 h-4 w-4 text-emerald-600" />
-              نماذج طلبات مؤتمتة
-            </div>
-            <div className="rounded-2xl border border-emerald-300/50 bg-white/60 p-3 dark:border-emerald-500/30 dark:bg-white/10">
-              <Wrench className="mb-2 h-4 w-4 text-emerald-600" />
-              تتبع صيانة السكن والأدوات والفروع
-            </div>
-            <div className="rounded-2xl border border-emerald-300/50 bg-white/60 p-3 dark:border-emerald-500/30 dark:bg-white/10">
-              <MessageSquareText className="mb-2 h-4 w-4 text-emerald-600" />
-              توثيق كامل لمحادثات واتساب
-            </div>
+        </section>
+
+        <section id="approval" className="rounded-3xl border border-emerald-300 bg-emerald-50 p-8 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10">
+          <div className="mb-4 flex items-center gap-2">
+            <FileText className="h-5 w-5 text-emerald-600" />
+            <h2 className="text-2xl font-bold">الموافقة على العرض</h2>
+          </div>
+          <p className="mb-5 text-sm text-slate-600 dark:text-slate-200">
+            في حال الموافقة، اختر طريقة التأكيد المناسبة لبدء التنفيذ وجدولة اجتماع الانطلاق.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <CTAButton href={emailApproval}>موافقة عبر الإيميل</CTAButton>
+            <CTAButton href={whatsappApproval} secondary>
+              موافقة عبر واتساب
+            </CTAButton>
           </div>
         </section>
       </div>

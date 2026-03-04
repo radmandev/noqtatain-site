@@ -58,7 +58,7 @@ const SafetySideOffer = () => {
             </div>
             <div>
               <p className="text-sm text-slate-500">إجمالي التكلفة</p>
-              <p className="text-2xl font-bold text-emerald-700">٣,٥٠٠ ريال سعودي</p>
+              <p className="text-2xl font-bold text-emerald-700">٢,٠٠٠ ريال سعودي</p>
             </div>
           </div>
         </section>

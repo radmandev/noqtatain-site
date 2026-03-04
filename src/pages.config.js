@@ -18,6 +18,7 @@ import beau10 from './pages/beau10';
 import MedhalJazeera from './pages/medhal-jazeera';
 import SafetySideOffer from './pages/safetysideoffer';
 import HamsaBitrix24 from './pages/hamsa-bitrix24';
+import MutahedDesignOffer from './pages/MutahedDesignOffer';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -46,6 +47,8 @@ export const PAGES = {
     'medhal-jazeera': MedhalJazeera,
     'privacy-policy': PrivacyPolicy,
     'terms-of-service': TermsOfService,
+    MutahedDesignOffer,
+    'mutahed-design-offer': MutahedDesignOffer,
 };
 
 export const pagesConfig = {

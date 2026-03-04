@@ -16,6 +16,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import beau10 from './pages/beau10';
 import MedhalJazeera from './pages/medhal-jazeera';
+import SafetySideOffer from './pages/safetysideoffer';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -37,6 +38,8 @@ export const PAGES = {
     TermsOfService,
     beau10,
     MedhalJazeera,
+    SafetySideOffer,
+    safetysideoffer: SafetySideOffer,
     'medhal-jazeera': MedhalJazeera,
     'privacy-policy': PrivacyPolicy,
     'terms-of-service': TermsOfService,

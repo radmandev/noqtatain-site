@@ -17,6 +17,7 @@ import TermsOfService from './pages/TermsOfService';
 import beau10 from './pages/beau10';
 import MedhalJazeera from './pages/medhal-jazeera';
 import SafetySideOffer from './pages/safetysideoffer';
+import HamsaBitrix24 from './pages/hamsa-bitrix24';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -39,6 +40,8 @@ export const PAGES = {
     beau10,
     MedhalJazeera,
     SafetySideOffer,
+    HamsaBitrix24,
+    'hamsa-bitrix24': HamsaBitrix24,
     safetysideoffer: SafetySideOffer,
     'medhal-jazeera': MedhalJazeera,
     'privacy-policy': PrivacyPolicy,

@@ -54,11 +54,11 @@ const SafetySideOffer = () => {
             </div>
             <div>
               <p className="text-sm text-slate-500">المدة التقديرية</p>
-              <p className="text-lg font-semibold text-slate-900">5 إلى 7 أيام عمل</p>
+              <p className="text-lg font-semibold text-slate-900">٤ إلى ٥ أسابيع</p>
             </div>
             <div>
               <p className="text-sm text-slate-500">إجمالي التكلفة</p>
-              <p className="text-2xl font-bold text-emerald-700">3,000 ريال سعودي</p>
+              <p className="text-2xl font-bold text-emerald-700">٤,٥٠٠ ريال سعودي</p>
             </div>
           </div>
         </section>
@@ -79,7 +79,7 @@ const SafetySideOffer = () => {
           </div>
         </section>
 
-        <section className="mt-8 grid gap-8 md:grid-cols-2">
+        <section className="mt-8">
           <article className="rounded-2xl bg-white p-8 shadow-sm">
             <h2 className="text-2xl font-bold text-slate-900">المخرجات المتوقعة</h2>
             <ul className="mt-4 list-disc space-y-2 pr-5 text-slate-600">
@@ -88,16 +88,6 @@ const SafetySideOffer = () => {
               <li>لوحة متابعة واضحة للمراحل والمهام.</li>
               <li>دليل استخدام مختصر للفريق (Quick Guide).</li>
               <li>جلسة تسليم وشرح للمسؤول المعني.</li>
-            </ul>
-          </article>
-
-          <article className="rounded-2xl bg-white p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-slate-900">شروط العرض</h2>
-            <ul className="mt-4 list-disc space-y-2 pr-5 text-slate-600">
-              <li>توفير صلاحيات الوصول اللازمة على Bitrix24.</li>
-              <li>اعتماد مسؤول اتصال من جانب آمن لاعتماد المراحل والسيناريوهات.</li>
-              <li>شروط الدفع: 100% عند اعتماد العرض وبدء التنفيذ.</li>
-              <li>صلاحية العرض: 15 يومًا من تاريخ إصداره.</li>
             </ul>
           </article>
         </section>

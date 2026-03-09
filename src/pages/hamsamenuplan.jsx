@@ -184,6 +184,10 @@ export default function HamsaMenuPlan() {
                 <p className="text-sm text-slate-500 dark:text-slate-300">الاشتراك السنوي</p>
                 <p className="mt-1 text-2xl font-bold text-indigo-700 dark:text-indigo-300">٣٠٠٠ ريال</p>
               </div>
+              <div className="rounded-2xl border border-white/60 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                <p className="text-sm text-slate-500 dark:text-slate-300">تكلفة الإعداد</p>
+                <p className="mt-1 text-2xl font-bold text-indigo-700 dark:text-indigo-300">٢٥٠٠ ريال <span className="text-sm font-medium">(مرة واحدة)</span></p>
+              </div>
             </div>
           </article>
 

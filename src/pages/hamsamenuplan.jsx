@@ -30,7 +30,7 @@ const customPros = [
 const customCons = ['تكلفة أعلى في البداية', 'مدة تطوير أطول', 'الحاجة إلى استضافة وصيانة'];
 
 const comparisonRows = [
-  { label: 'التكلفة', ready: 'منخفضة (إعداد + اشتراك شهري)', custom: 'أعلى مبدئياً (تطوير + استضافة)' },
+  { label: 'التكلفة', ready: '٢٥٠ ريال شهرياً أو ٣٠٠٠ ريال سنوياً', custom: 'تبدأ من ٩٠٠٠ ريال (على ٣ أشهر)' },
   { label: 'مدة التنفيذ', ready: 'عدة أيام', custom: 'من أسبوعين إلى أربعة أسابيع' },
   { label: 'مستوى التخصيص', ready: 'محدود', custom: 'عالي جداً' },
   { label: 'قابلية التوسع', ready: 'متوسطة', custom: 'مرتفعة' },
@@ -114,6 +114,7 @@ export default function HamsaMenuPlan() {
             <ChefHat className="h-4 w-4" />
             عرض استشاري احترافي
           </div>
+          <p className="mb-3 text-sm font-medium text-amber-700 dark:text-amber-200">تم الإعداد من قبل فريق التسويق</p>
           <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl">مقترح إنشاء منيو رقمي لمطعم حمسة وتغميسة</h1>
           <p className="mt-4 max-w-3xl text-base text-slate-600 dark:text-slate-300">
             يهدف هذا المقترح إلى تمكين المطعم من تقديم تجربة رقمية حديثة تسهّل تصفح الأصناف، تسرّع عملية الطلب، وتعزز رضا العملاء داخل المطعم وخارجه بما ينعكس على زيادة الطلبات وتحسين الكفاءة التشغيلية.
@@ -165,6 +166,43 @@ export default function HamsaMenuPlan() {
             budget={['تكلفة التصميم والتطوير', 'تكلفة الاستضافة السنوية', 'تكلفة الصيانة الاختيارية']}
             duration="من أسبوعين إلى أربعة أسابيع"
           />
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-3xl border border-indigo-200 bg-indigo-50 p-6 shadow-sm dark:border-indigo-500/30 dark:bg-indigo-500/10">
+            <div className="mb-3 flex items-center gap-2">
+              <Landmark className="h-5 w-5 text-indigo-600" />
+              <h2 className="text-xl font-bold">التكلفة المالية - الخيار الأول</h2>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-300">استخدام تسعيرة منصة TryOrder:</p>
+            <div className="mt-4 space-y-3">
+              <div className="rounded-2xl border border-white/60 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                <p className="text-sm text-slate-500 dark:text-slate-300">الاشتراك الشهري</p>
+                <p className="mt-1 text-2xl font-bold text-indigo-700 dark:text-indigo-300">٢٥٠ ريال</p>
+              </div>
+              <div className="rounded-2xl border border-white/60 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                <p className="text-sm text-slate-500 dark:text-slate-300">الاشتراك السنوي</p>
+                <p className="mt-1 text-2xl font-bold text-indigo-700 dark:text-indigo-300">٣٠٠٠ ريال</p>
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm dark:border-emerald-500/30 dark:bg-emerald-500/10">
+            <div className="mb-3 flex items-center gap-2">
+              <Landmark className="h-5 w-5 text-emerald-600" />
+              <h2 className="text-xl font-bold">التكلفة المالية - الخيار الثاني</h2>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-300">تطوير منيو رقمي مخصص بنظام التطوير المستمر:</p>
+            <div className="mt-4 rounded-2xl border border-white/60 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+              <p className="text-sm text-slate-500 dark:text-slate-300">التكلفة الإجمالية</p>
+              <p className="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-300">تبدأ من ٩٠٠٠ ريال</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">موزعة على ٣ أشهر (٣٠٠٠ ريال لكل شهر).</p>
+            </div>
+            <div className="mt-4 rounded-2xl border border-white/60 bg-white p-4 text-sm dark:border-white/10 dark:bg-white/5">
+              <p className="mb-2 font-semibold">المميزات المضمنة:</p>
+              <p className="text-slate-600 dark:text-slate-300">تشمل جميع مميزات منصة TryOrder ما عدا تطبيق الجوال.</p>
+            </div>
+          </article>
         </section>
 
         <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">

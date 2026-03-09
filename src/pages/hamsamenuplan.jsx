@@ -30,7 +30,7 @@ const customPros = [
 const customCons = ['تكلفة أعلى في البداية', 'مدة تطوير أطول', 'الحاجة إلى استضافة وصيانة'];
 
 const comparisonRows = [
-  { label: 'التكلفة', ready: '٢٥٠ ريال شهرياً أو ٣٠٠٠ ريال سنوياً', custom: 'تبدأ من ٩٠٠٠ ريال (على ٣ أشهر)' },
+  { label: 'التكلفة', ready: '٢٥٠ ريال شهرياً أو ٣٠٠٠ ريال سنوياً + ٢٥٠٠ ريال تخصيص (مرة واحدة)', custom: '١٢٠٠٠ ريال موزعة على ٤ دفعات (٤ حزم تطوير)' },
   { label: 'مدة التنفيذ', ready: 'عدة أيام', custom: 'من أسبوعين إلى أربعة أسابيع' },
   { label: 'مستوى التخصيص', ready: 'محدود', custom: 'عالي جداً' },
   { label: 'قابلية التوسع', ready: 'متوسطة', custom: 'مرتفعة' },
@@ -152,7 +152,7 @@ export default function HamsaMenuPlan() {
             accent="bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-200"
             pros={readyPros}
             cons={readyCons}
-            budget={['رسوم إعداد (مرة واحدة)', 'اشتراك شهري حسب الباقة المختارة']}
+            budget={['رسوم إعداد (مرة واحدة)', 'اشتراك شهري حسب الباقة المختارة', 'تكلفة تخصيص المنيو: ٢٥٠٠ ريال (مرة واحدة)']}
             duration="عدة أيام فقط"
           />
 
@@ -195,8 +195,8 @@ export default function HamsaMenuPlan() {
             <p className="text-sm text-slate-600 dark:text-slate-300">تطوير منيو رقمي مخصص بنظام التطوير المستمر:</p>
             <div className="mt-4 rounded-2xl border border-white/60 bg-white p-4 dark:border-white/10 dark:bg-white/5">
               <p className="text-sm text-slate-500 dark:text-slate-300">التكلفة الإجمالية</p>
-              <p className="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-300">تبدأ من ٩٠٠٠ ريال</p>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">موزعة على ٣ أشهر (٣٠٠٠ ريال لكل شهر).</p>
+              <p className="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-300">١٢٠٠٠ ريال</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">موزعة على ٤ دفعات (٤ حزم تطوير)، كل حزمة ٣٠٠٠ ريال، والمدة حسب اختيار الإدارة والميزانية.</p>
             </div>
             <div className="mt-4 rounded-2xl border border-white/60 bg-white p-4 text-sm dark:border-white/10 dark:bg-white/5">
               <p className="mb-2 font-semibold">المميزات المضمنة:</p>

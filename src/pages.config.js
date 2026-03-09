@@ -19,6 +19,7 @@ import MedhalJazeera from './pages/medhal-jazeera';
 import SafetySideOffer from './pages/safetysideoffer';
 import HamsaBitrix24 from './pages/hamsa-bitrix24';
 import MutahedDesignOffer from './pages/MutahedDesignOffer';
+import HamsaMenuPlan from './pages/hamsamenuplan';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -49,6 +50,9 @@ export const PAGES = {
     'terms-of-service': TermsOfService,
     MutahedDesignOffer,
     'mutahed-design-offer': MutahedDesignOffer,
+    HamsaMenuPlan,
+    hamsamenuplan: HamsaMenuPlan,
+
 };
 
 export const pagesConfig = {

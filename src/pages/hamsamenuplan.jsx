@@ -112,9 +112,9 @@ export default function HamsaMenuPlan() {
         <section className="rounded-3xl border border-amber-200/70 bg-white p-8 shadow-lg dark:border-amber-400/20 dark:bg-white/5">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-1 text-sm font-semibold text-amber-700 dark:bg-amber-500/20 dark:text-amber-200">
             <ChefHat className="h-4 w-4" />
-            عرض استشاري احترافي
+            مقترح استشاري مقدم من فريق التسويق
           </div>
-          <p className="mb-3 text-sm font-medium text-amber-700 dark:text-amber-200">تم الإعداد من قبل فريق التسويق</p>
+          {/* <p className="mb-3 text-sm font-medium text-amber-700 dark:text-amber-200">تم الإعداد من قبل فريق التسويق</p> */}
           <h1 className="text-3xl font-extrabold leading-tight sm:text-4xl">مقترح إنشاء منيو رقمي لمطعم حمسة وتغميسة</h1>
           <p className="mt-4 max-w-3xl text-base text-slate-600 dark:text-slate-300">
             يهدف هذا المقترح إلى تمكين المطعم من تقديم تجربة رقمية حديثة تسهّل تصفح الأصناف، تسرّع عملية الطلب، وتعزز رضا العملاء داخل المطعم وخارجه بما ينعكس على زيادة الطلبات وتحسين الكفاءة التشغيلية.

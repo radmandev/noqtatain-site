@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const sectionData = [
   {
@@ -75,20 +75,12 @@ const sectionData = [
   },
 ];
 
-const STORAGE_KEY = 'plan_unlocked';
-const PASSWORD = 'bismillah';
+const PASSWORD = '$noqt@t..n$';
 
 export default function Plan() {
   const [password, setPassword] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    const storedValue = localStorage.getItem(STORAGE_KEY);
-    if (storedValue === 'true') {
-      setIsUnlocked(true);
-    }
-  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,7 +88,6 @@ export default function Plan() {
     if (password === PASSWORD) {
       setIsUnlocked(true);
       setError('');
-      localStorage.setItem(STORAGE_KEY, 'true');
       return;
     }
 
@@ -107,7 +98,6 @@ export default function Plan() {
   const handleLock = () => {
     setIsUnlocked(false);
     setPassword('');
-    localStorage.removeItem(STORAGE_KEY);
   };
 
   if (!isUnlocked) {

@@ -20,6 +20,7 @@ import SafetySideOffer from './pages/safetysideoffer';
 import HamsaBitrix24 from './pages/hamsa-bitrix24';
 import MutahedDesignOffer from './pages/MutahedDesignOffer';
 import HamsaMenuPlan from './pages/hamsamenuplan';
+import DPowerBotOffer from './pages/dpowerbotoffer';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -52,6 +53,8 @@ export const PAGES = {
     'mutahed-design-offer': MutahedDesignOffer,
     HamsaMenuPlan,
     hamsamenuplan: HamsaMenuPlan,
+    DPowerBotOffer,
+    dpowerbotoffer: DPowerBotOffer,
 
 };
 

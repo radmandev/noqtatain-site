@@ -21,6 +21,7 @@ import HamsaBitrix24 from './pages/hamsa-bitrix24';
 import MutahedDesignOffer from './pages/MutahedDesignOffer';
 import HamsaMenuPlan from './pages/hamsamenuplan';
 import DPowerBotOffer from './pages/dpowerbotoffer';
+import Plan from './pages/Plan';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -55,6 +56,8 @@ export const PAGES = {
     hamsamenuplan: HamsaMenuPlan,
     DPowerBotOffer,
     dpowerbotoffer: DPowerBotOffer,
+    Plan,
+    plan: Plan,
 
 };
 

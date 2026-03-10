@@ -38,7 +38,7 @@ const DPowerBotOffer = () => {
             </div>
             <div>
               <p className="text-sm text-slate-500">المدة التقديرية</p>
-              <p className="text-lg font-semibold text-slate-900">1 - 2 يوم عمل</p>
+              <p className="text-lg font-semibold text-slate-900">5 - 8 يوم عمل</p>
             </div>
             <div>
               <p className="text-sm text-slate-500">إجمالي التكلفة</p>

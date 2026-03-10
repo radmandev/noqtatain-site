@@ -42,7 +42,7 @@ const DPowerBotOffer = () => {
             </div>
             <div>
               <p className="text-sm text-slate-500">إجمالي التكلفة</p>
-              <p className="text-2xl font-bold text-emerald-700">900 ريال سعودي</p>
+              <p className="text-2xl font-bold text-emerald-700">1000 ريال سعودي</p>
             </div>
           </div>
 

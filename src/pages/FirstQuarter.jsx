@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const goals = [
   { title: 'الهدف المالي', value: '60,000 – 80,000 ريال', note: 'إيراد شهري متكرر (MRR)' },
@@ -8,7 +8,7 @@ const goals = [
 
 const pillars = [
   {
-    title: '1️⃣ تأسيس البنية التشغيلية',
+    title: '1) تأسيس البنية التشغيلية',
     objective: 'بناء أساس الشركة قبل التوسع',
     tasks: [
       'تطوير الهوية البصرية النهائية',
@@ -20,7 +20,7 @@ const pillars = [
     result: 'شركة جاهزة للبيع والتنفيذ.',
   },
   {
-    title: '2️⃣ بناء نظام البيع',
+    title: '2) بناء نظام البيع',
     objective: 'إنشاء عملية بيع واضحة وقابلة للتكرار',
     tasks: [
       'إنشاء صفحة حجز جلسة تشخيص',
@@ -31,7 +31,7 @@ const pillars = [
     result: 'عملية بيع واضحة يمكن تكرارها مع كل عميل.',
   },
   {
-    title: '3️⃣ التسويق وجلب العملاء',
+    title: '3) التسويق وجلب العملاء',
     objective: 'جلب 20 عميل محتمل شهريًا',
     tasks: [
       'تنشيط شبكة العلاقات وطلب الإحالات (هدف 3 عملاء)',
@@ -42,7 +42,7 @@ const pillars = [
     result: 'تدفّق مستمر للعملاء المحتملين مع تعزيز المصداقية.',
   },
   {
-    title: '4️⃣ تشغيل المشاريع الأولى',
+    title: '4) تشغيل المشاريع الأولى',
     objective: 'تنفيذ المشاريع بجودة عالية لبناء السمعة',
     tasks: [
       'اختيار فريق Outsourcing (تصميم، فيديو، محتوى، إعلانات، أتمتة)',
@@ -88,6 +88,60 @@ const ceoWeekly = [
 ];
 
 export default function FirstQuarter() {
+  const [password, setPassword] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password === 'Bismillah') {
+      setIsUnlocked(true);
+      setError('');
+      return;
+    }
+
+    setIsUnlocked(false);
+    setError('كلمة المرور غير صحيحة. حاول مرة أخرى.');
+  };
+
+  if (!isUnlocked) {
+    return (
+      <section dir="rtl" className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-50/95 px-4 py-16 backdrop-blur-sm dark:bg-slate-950/95">
+        <div className="mx-auto max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h1 className="mb-2 text-xl font-extrabold text-slate-900 dark:text-white">صفحة الربع الأول مغلقة بكلمة مرور</h1>
+          <p className="mb-5 text-sm text-slate-600 dark:text-slate-300">الرجاء إدخال كلمة المرور للوصول إلى الخطة التشغيلية.</p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="first-quarter-password">
+              كلمة المرور
+            </label>
+            <input
+              id="first-quarter-password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2 text-slate-900 outline-none ring-violet-300 transition focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              placeholder="أدخل كلمة المرور"
+            />
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-violet-600 px-4 py-2.5 font-semibold text-white transition hover:bg-violet-700"
+            >
+              دخول
+            </button>
+          </form>
+
+          {error && (
+            <p className="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 dark:bg-rose-900/30 dark:text-rose-300">
+              {error}
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <div dir="rtl" className="bg-slate-50 px-4 pb-14 pt-28 text-slate-900 dark:bg-slate-950 dark:text-white">
       <main className="mx-auto max-w-6xl space-y-8">

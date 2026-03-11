@@ -22,6 +22,7 @@ import MutahedDesignOffer from './pages/MutahedDesignOffer';
 import HamsaMenuPlan from './pages/hamsamenuplan';
 import DPowerBotOffer from './pages/dpowerbotoffer';
 import Plan from './pages/Plan';
+import FirstQuarter from './pages/FirstQuarter';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -58,6 +59,8 @@ export const PAGES = {
     dpowerbotoffer: DPowerBotOffer,
     Plan,
     plan: Plan,
+    FirstQuarter,
+    firstquarter: FirstQuarter,
 
 };
 

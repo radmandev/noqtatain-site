@@ -109,7 +109,7 @@ export default function FirstQuarter() {
     return (
       <section dir="rtl" className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-50/95 px-4 py-16 backdrop-blur-sm dark:bg-slate-950/95">
         <div className="mx-auto max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <h1 className="mb-2 text-xl font-extrabold text-slate-900 dark:text-white">صفحة الربع الأول الخاصة</h1>
+          <h1 className="mb-2 text-xl font-extrabold text-slate-900 dark:text-white">صفحة الربع الأول مغلقة بكلمة مرور</h1>
           <p className="mb-5 text-sm text-slate-600 dark:text-slate-300">الرجاء إدخال كلمة المرور للوصول إلى الخطة التشغيلية.</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">

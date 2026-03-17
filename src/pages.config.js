@@ -23,6 +23,7 @@ import HamsaMenuPlan from './pages/hamsamenuplan';
 import DPowerBotOffer from './pages/dpowerbotoffer';
 import Plan from './pages/Plan';
 import FirstQuarter from './pages/FirstQuarter';
+import OptivisionExpo from './pages/optivisionexpo';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -61,6 +62,9 @@ export const PAGES = {
     plan: Plan,
     FirstQuarter,
     firstquarter: FirstQuarter,
+    OptivisionExpo,
+    optivisionexpo: OptivisionExpo,
+    'optivision-expo': OptivisionExpo,
 
 };
 

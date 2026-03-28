@@ -24,6 +24,7 @@ import DPowerBotOffer from './pages/dpowerbotoffer';
 import Plan from './pages/Plan';
 import FirstQuarter from './pages/FirstQuarter';
 import OptivisionExpo from './pages/optivisionexpo';
+import FustoqahOffer from './pages/FustoqahOffer';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -65,6 +66,9 @@ export const PAGES = {
     OptivisionExpo,
     optivisionexpo: OptivisionExpo,
     'optivision-expo': OptivisionExpo,
+    FustoqahOffer,
+    fustoqahoffer: FustoqahOffer,
+    'fustoqah-offer': FustoqahOffer,
 
 };
 

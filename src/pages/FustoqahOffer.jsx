@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Target,
@@ -83,7 +83,72 @@ const services = [
   'تقرير أسبوعي وتقرير شهري مع تحليل واضح لمؤشرات ROAS.',
 ];
 
+const ACCESS_PASSWORD = 'ebrahim';
+const ACCESS_KEY = 'fustoqah-offer-access';
+
 const FustoqahOffer = () => {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    const savedAccess = localStorage.getItem(ACCESS_KEY);
+    if (savedAccess === 'granted') {
+      setIsUnlocked(true);
+    }
+  }, []);
+
+  const handleUnlock = (event) => {
+    event.preventDefault();
+
+    if (password.trim().toLowerCase() === ACCESS_PASSWORD) {
+      localStorage.setItem(ACCESS_KEY, 'granted');
+      setIsUnlocked(true);
+      setError('');
+      return;
+    }
+
+    setError('كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.');
+  };
+
+  if (!isUnlocked) {
+    return (
+      <main dir="rtl" className="min-h-[80vh] bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
+          <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+            <p className="text-sm font-semibold text-indigo-700">صفحة محمية</p>
+            <h1 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">عرض متجر Fustoqah</h1>
+            <p className="mt-3 leading-7 text-slate-600">
+              يرجى إدخال كلمة المرور للوصول إلى العرض الفني والمالي.
+            </p>
+
+            <form onSubmit={handleUnlock} className="mt-6 space-y-4">
+              <label htmlFor="offer-password" className="block text-sm font-medium text-slate-700">
+                كلمة المرور
+              </label>
+              <input
+                id="offer-password"
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                placeholder="أدخل كلمة المرور"
+                autoComplete="current-password"
+              />
+              {error ? <p className="text-sm font-medium text-rose-600">{error}</p> : null}
+              <button
+                type="submit"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 font-semibold text-white transition hover:bg-slate-800"
+              >
+                دخول العرض
+              </button>
+            </form>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main dir="rtl" className="bg-slate-50 py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

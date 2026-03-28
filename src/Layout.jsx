@@ -11,6 +11,10 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const isPortal = currentPageName?.toLowerCase() === 'portal'
     || location.pathname.toLowerCase().startsWith('/portal');
+  const isFustoqahOffer = currentPageName?.toLowerCase() === 'fustoqahoffer'
+    || location.pathname.toLowerCase().startsWith('/fustoqah-offer')
+    || location.pathname.toLowerCase().startsWith('/fustoqahoffer');
+  const hideSiteChrome = isPortal || isFustoqahOffer;
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
@@ -94,7 +98,7 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
 
-      {!isPortal && (
+      {!hideSiteChrome && (
         <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-slate-200/50 dark:border-slate-800/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
@@ -246,12 +250,12 @@ export default function Layout({ children, currentPageName }) {
       )}
 
       {/* Main Content */}
-      <main className={isPortal ? undefined : "pt-20"}>
+      <main className={hideSiteChrome ? undefined : "pt-20"}>
         {children}
       </main>
 
       {/* Footer */}
-      {!isPortal && (
+      {!hideSiteChrome && (
         <footer className="bg-slate-900 dark:bg-slate-950 text-white py-10 border-t border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-3">

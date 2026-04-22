@@ -26,6 +26,7 @@ import FirstQuarter from './pages/FirstQuarter';
 import OptivisionExpo from './pages/optivisionexpo';
 import FustoqahOffer from './pages/FustoqahOffer';
 import Profile from './pages/Profile';
+import Profile from './pages/why-us';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {

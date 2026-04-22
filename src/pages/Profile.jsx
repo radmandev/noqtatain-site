@@ -5,8 +5,8 @@ export default function Profile() {
     <iframe
       src={profilePageUrl}
       title="Company Profile"
-      className="w-full border-0"
-      style={{ minHeight: '100vh' }}
+      className="block w-full border-0"
+      style={{ minHeight: '100dvh' }}
     />
   );
 }

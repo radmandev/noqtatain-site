@@ -14,7 +14,9 @@ export default function Layout({ children, currentPageName }) {
   const isFustoqahOffer = currentPageName?.toLowerCase() === 'fustoqahoffer'
     || location.pathname.toLowerCase().startsWith('/fustoqah-offer')
     || location.pathname.toLowerCase().startsWith('/fustoqahoffer');
-  const hideSiteChrome = isPortal || isFustoqahOffer;
+  const isProfile = currentPageName?.toLowerCase() === 'profile'
+    || location.pathname.toLowerCase().startsWith('/profile');
+  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile;
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode

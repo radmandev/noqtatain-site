@@ -44,6 +44,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'الرئيسية', page: 'Home' },
     { name: 'من نحن', page: 'About' },
     { name: 'الخدمات', page: 'Services' },
+    { name: 'لماذا نحن', page: 'why-us' },
     { name: 'المدونة', page: 'Blog' },
     { name: 'تواصل معنا', page: 'Contact' },
   ];

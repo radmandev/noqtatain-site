@@ -26,7 +26,7 @@ import FirstQuarter from './pages/FirstQuarter';
 import OptivisionExpo from './pages/optivisionexpo';
 import FustoqahOffer from './pages/FustoqahOffer';
 import Profile from './pages/Profile';
-import Profile from './pages/why-us';
+import WhyUs from './pages/why-us';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -71,6 +71,8 @@ export const PAGES = {
     FustoqahOffer,
     Profile,
     profile: Profile,
+    WhyUs,
+    'why-us': WhyUs,
     fustoqahoffer: FustoqahOffer,
     'fustoqah-offer': FustoqahOffer,
 

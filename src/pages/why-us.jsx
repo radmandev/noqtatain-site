@@ -1,10 +1,10 @@
-import profilePageUrl from './profile.html?url';
+import whyUsPageUrl from './why-us.html?url';
 
-export default function Profile() {
+export default function WhyUs() {
   return (
     <iframe
-      src={profilePageUrl}
-      title="Company Profile"
+      src={whyUsPageUrl}
+      title="Why Us"
       className="w-full border-0"
       style={{ minHeight: '100vh' }}
     />

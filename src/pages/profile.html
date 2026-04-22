@@ -157,32 +157,50 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
   display:flex;align-items:center;justify-content:center;
 }
 .welcome-box p { font-size:13px;color:#3a4a5c;line-height:1.9; }
-.welcome-stats { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:auto; }
+.welcome-stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:2px;
+}
 .w-stat {
-  background:linear-gradient(135deg, var(--purpleL), var(--purple));
-  border-radius:16px;
-  padding:10px 0 6px 0;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffffff 0%,#f4efff 55%,#ebe3ff 100%);
+  border:1px solid rgba(123,94,167,.22);
+  border-radius:18px;
+  padding:13px 8px 11px;
   text-align:center;
-  box-shadow:0 2px 8px rgba(123,94,167,0.08);
+  box-shadow:0 8px 18px rgba(13,27,46,.08);
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:0;
+  gap:2px;
   min-width:80px;
 }
+.w-stat::after {
+  content:'';
+  position:absolute;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  top:-24px;
+  left:-24px;
+  background:radial-gradient(circle,rgba(123,94,167,.18),transparent 70%);
+}
 .w-stat .wn {
-  font-size:26px;
+  font-size:25px;
   font-weight:900;
-  color:#fff;
+  color:var(--navy);
   margin-bottom:0;
   line-height:1.1;
 }
 .w-stat .wl {
   font-size:11px;
-  color:rgba(255,255,255,.85);
-  font-weight:500;
+  color:#5f517c;
+  font-weight:700;
   margin-top:0;
-  letter-spacing:1px;
+  letter-spacing:.4px;
 }
 
 /* ══════════════════════════════════════
@@ -346,11 +364,11 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
 
 /* 3-service grid (3 columns) */
 .svc-triple {
-
-  flex:1;
+  padding:22px 40px 24px;
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   gap:18px;
+  align-items:start;
 }
 .svc-col {
   background:var(--offW);
@@ -362,12 +380,15 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
   gap:13px;
   border:none;
   transition:transform 0.18s;
+  align-self:start;
 }
 .svc-col:hover {
   transform:translateY(-4px) scale(1.02);
   box-shadow:0 6px 24px rgba(123,94,167,0.13);
 }
-.svc-col .svc-desc { flex:1; }
+.svc-triple .svc-col .svc-desc { flex:unset; }
+.svc-triple .svc-quote,
+.svc-triple .svc-stats { margin-top:0; }
 
 /* shared cell/col inner elements */
 .svc-cell-hd,.svc-col-hd {
@@ -600,6 +621,44 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
 .ct-dots .dlw { width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.88); }
 .ct-dots .dlp { width:20px;height:20px;border-radius:50%;background:var(--purple); }
 .ct-dots .dlb { font-size:16px;font-weight:800;color:#fff;margin:0 6px; }
+
+/* ── FLOATING ACTION BUTTONS ── */
+.floating-actions {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fab {
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--purple), var(--purpleD));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(13, 27, 46, .3);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(13, 27, 46, .35);
+}
+.fab:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(13, 27, 46, .25);
+}
+@media print {
+  .floating-actions { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -671,11 +730,9 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
         <p>في نقطتين، نؤمن بأن كل فكرة تستحق أن تُحوَّل إلى واقع ملموس. نجمع بين الخبرة التقنية والرؤية الإبداعية لنبني معك مستقبلاً رقمياً أقوى.</p>
       </div>
       <div class="welcome-stats">
-        <div class="welcome-stats">
-          <div class="w-stat"><div class="wn">+50</div><div class="wl">مشروع ناجح</div></div>
-          <div class="w-stat"><div class="wn">+30</div><div class="wl">عميل راضٍ</div></div>
-          <div class="w-stat"><div class="wn">5+</div><div class="wl">سنوات خبرة</div></div>
-        </div>
+        <div class="w-stat"><div class="wn">+50</div><div class="wl">مشروع ناجح</div></div>
+        <div class="w-stat"><div class="wn">+30</div><div class="wl">عميل راضٍ</div></div>
+        <div class="w-stat"><div class="wn">5+</div><div class="wl">سنوات خبرة</div></div>
       </div>
     </div>
     <div class="pf">
@@ -1391,6 +1448,50 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
     </div>
   </div>
 </div>
+
+<div class="floating-actions" aria-label="Quick actions">
+  <button type="button" class="fab" id="downloadPdfBtn">Download as PDF</button>
+  <button type="button" class="fab" id="shareBtn">Share</button>
+  <a class="fab" href="https://noqtatain.com/Contact" target="_blank" rel="noopener noreferrer">Contact us</a>
+</div>
+
+<script>
+  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+  const shareBtn = document.getElementById('shareBtn');
+
+  if (downloadPdfBtn) {
+    downloadPdfBtn.addEventListener('click', () => window.print());
+  }
+
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: document.title || 'Noqtatain Profile',
+        text: 'Check out Noqtatain company profile',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (error) {
+          if (error && error.name !== 'AbortError') {
+            console.error(error);
+          }
+        }
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        shareBtn.textContent = 'Link copied';
+        setTimeout(() => { shareBtn.textContent = 'Share'; }, 1400);
+      } catch (error) {
+        window.prompt('Copy this link:', shareData.url);
+      }
+    });
+  }
+</script>
 
 </body>
 </html>

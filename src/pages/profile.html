@@ -57,6 +57,16 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
     width:100%;
     padding:12px 14px;
   }
+
+  /* Avoid spaced-out Arabic glyphs on compact screens. */
+  .cover-badge,
+  .sec-label,
+  .vsec-lbl,
+  .vals-title,
+  .svc-ov-hdr .lbl {
+    letter-spacing:normal !important;
+    text-transform:none !important;
+  }
 }
 
 /* ── SHARED COMPONENTS ── */

@@ -625,7 +625,7 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
 /* ── FLOATING ACTION BUTTONS ── */
 .floating-actions {
   position: fixed;
-  left: 20px;
+  right: 20px;
   bottom: 20px;
   z-index: 9999;
   display: flex;
@@ -1449,46 +1449,21 @@ body { font-family:'Tajawal',sans-serif; background:#111827; direction:rtl; }
   </div>
 </div>
 
-<div class="floating-actions" aria-label="Quick actions">
-  <button type="button" class="fab" id="downloadPdfBtn">Download as PDF</button>
-  <button type="button" class="fab" id="shareBtn">Share</button>
-  <a class="fab" href="https://noqtatain.com/Contact" target="_blank" rel="noopener noreferrer">Contact us</a>
+<div class="floating-actions" aria-label="إجراءات سريعة">
+  <a class="fab" href="https://noqtatain.com/profile.pdf" target="_blank" rel="noopener noreferrer" download>تنزيل كملف PDF</a>
+  <a class="fab" id="shareBtn" href="#" role="button">مشاركة</a>
+  <a class="fab" href="https://noqtatain.com/Contact" target="_blank" rel="noopener noreferrer">تواصل معنا</a>
 </div>
 
 <script>
-  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
   const shareBtn = document.getElementById('shareBtn');
 
-  if (downloadPdfBtn) {
-    downloadPdfBtn.addEventListener('click', () => window.print());
-  }
-
   if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: document.title || 'Noqtatain Profile',
-        text: 'Check out Noqtatain company profile',
-        url: window.location.href
-      };
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (error) {
-          if (error && error.name !== 'AbortError') {
-            console.error(error);
-          }
-        }
-        return;
-      }
-
-      try {
-        await navigator.clipboard.writeText(shareData.url);
-        shareBtn.textContent = 'Link copied';
-        setTimeout(() => { shareBtn.textContent = 'Share'; }, 1400);
-      } catch (error) {
-        window.prompt('Copy this link:', shareData.url);
-      }
+    shareBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      const message = 'مرحبا .. يسعدني أن أشاركك بروفايل شركة نقطتين.. للتسويق والأتمتة\nhttps://noqtatain.com/profile';
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
   }
 </script>

@@ -27,6 +27,7 @@ import OptivisionExpo from './pages/optivisionexpo';
 import FustoqahOffer from './pages/FustoqahOffer';
 import Profile from './pages/Profile';
 import WhyUs from './pages/why-us';
+import HobaGalaxy from './pages/hobagalaxy';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -75,6 +76,8 @@ export const PAGES = {
     'why-us': WhyUs,
     fustoqahoffer: FustoqahOffer,
     'fustoqah-offer': FustoqahOffer,
+    HobaGalaxy,
+    hobagalaxy: HobaGalaxy,
 
 };
 

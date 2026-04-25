@@ -16,7 +16,9 @@ export default function Layout({ children, currentPageName }) {
     || location.pathname.toLowerCase().startsWith('/fustoqahoffer');
   const isProfile = currentPageName?.toLowerCase() === 'profile'
     || location.pathname.toLowerCase().startsWith('/profile');
-  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile;
+  const isHobaGalaxy = currentPageName?.toLowerCase() === 'hobagalaxy'
+    || location.pathname.toLowerCase().startsWith('/hobagalaxy');
+  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile || isHobaGalaxy;
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
@@ -317,7 +319,7 @@ export default function Layout({ children, currentPageName }) {
       )}
 
       {/* WhatsApp Floating Button */}
-      <WhatsAppButton />
+      {!hideSiteChrome && <WhatsAppButton />}
     </div>
   );
 }

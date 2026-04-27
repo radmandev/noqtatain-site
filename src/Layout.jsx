@@ -18,7 +18,9 @@ export default function Layout({ children, currentPageName }) {
     || location.pathname.toLowerCase().startsWith('/profile');
   const isHobaGalaxy = currentPageName?.toLowerCase() === 'hobagalaxy'
     || location.pathname.toLowerCase().startsWith('/hobagalaxy');
-  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile || isHobaGalaxy;
+  const isEliteCons = currentPageName?.toLowerCase() === 'elitecons'
+    || location.pathname.toLowerCase().startsWith('/elitecons');
+  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile || isHobaGalaxy || isEliteCons;
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode

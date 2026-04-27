@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,7 +21,7 @@ const styles = `
     --r2:        20px;
   }
 
-  body { background: var(--ink); color: #fff; font-family: 'Cairo', sans-serif; direction: rtl; }
+  body { background: var(--ink); color: #fff; font-family: 'Tajawal', sans-serif; direction: rtl; }
 
   .page { min-height: 100vh; }
 
@@ -174,9 +174,10 @@ const styles = `
     margin: 16px 24px 24px;
     padding: 14px; border-radius: 10px;
     text-align: center; font-size: 14px; font-weight: 700;
+    display: block; text-decoration: none;
     cursor: pointer; border: none;
     transition: opacity 0.2s;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Tajawal', sans-serif;
   }
   .pkg-cta:hover { opacity: 0.85; }
   .pkg-cta.starter-cta { background: var(--faint); color: #fff; border: 1px solid var(--border); }
@@ -196,7 +197,7 @@ const styles = `
     padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600;
     cursor: pointer; border: 1px solid var(--border);
     background: transparent; color: var(--muted);
-    font-family: 'Cairo', sans-serif; transition: all 0.2s;
+    font-family: 'Tajawal', sans-serif; transition: all 0.2s;
   }
   .tab-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
   .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -275,7 +276,7 @@ const styles = `
     padding: 14px 32px; border-radius: 10px;
     background: var(--gold); color: var(--ink);
     font-size: 15px; font-weight: 800; border: none;
-    cursor: pointer; font-family: 'Cairo', sans-serif;
+    cursor: pointer; font-family: 'Tajawal', sans-serif; text-decoration: none;
     transition: opacity 0.2s;
   }
   .btn-primary:hover { opacity: 0.88; }
@@ -284,7 +285,7 @@ const styles = `
     background: transparent; color: #fff;
     font-size: 15px; font-weight: 600;
     border: 1px solid var(--border);
-    cursor: pointer; font-family: 'Cairo', sans-serif;
+    cursor: pointer; font-family: 'Tajawal', sans-serif; text-decoration: none;
     transition: border-color 0.2s;
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.35); }
@@ -342,7 +343,7 @@ const packages = [
       "8 ريلز شهرياً",
       "تقويم محتوى شهري كامل",
       "ستوري يومي",
-      "إعلانات مدفوعة (3,000 ريال ميزانية)",
+      "إعلانات مدفوعة (6,000 ريال ميزانية)",
       "تقرير أداء أسبوعي",
       "مدير حساب مخصص",
     ]
@@ -356,7 +357,7 @@ const packages = [
       "30 منشور شهرياً",
       "12 ريلز + 2 فيديو طويل",
       "جلسة تصوير شهرية للمواقع",
-      "إعلانات مدفوعة (8,000 ريال ميزانية)",
+      "إعلانات مدفوعة (12,000 ريال ميزانية)",
       "مقالات لينكدإن (2 شهرياً)",
       "WhatsApp Business إعداد وإدارة",
       "تقرير نهاية الشهر + اجتماع مراجعة",
@@ -392,6 +393,14 @@ const pillMap = {
 
 export default function EliteProposal() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const whatsappNumber = "966543569492";
+
+  const createWhatsAppLink = (packageName) => {
+    const message = packageName
+      ? `مرحباً فريق نقطتين، أرغب بالاشتراك في ${packageName} الخاصة بعرض صفوة التشييد.`
+      : "مرحباً فريق نقطتين، أرغب ببدء التعاون بخصوص عرض صفوة التشييد.";
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
 
   const filteredPosts = activeFilter === "all"
     ? posts
@@ -453,8 +462,8 @@ export default function EliteProposal() {
           <div className="who-grid">
             <div className="who-card">
               <div className="who-icon">◆</div>
-              <div className="who-title">متخصصون في قطاع الإنشاءات</div>
-              <div className="who-text">نفهم لغة العقارات والمقاولات والتشطيبات — ونعرف كيف نُترجمها لمحتوى يقنع متخذي القرار.</div>
+              <div className="who-title">متخصصون في التسويق الرقمي الإبداعي</div>
+              <div className="who-text">نبني أفكار محتوى جريئة ورسائل تسويقية ذكية تُبرز قيمة علامتك وتحوّل الاهتمام إلى طلبات فعلية.</div>
             </div>
             <div className="who-card">
               <div className="who-icon">▲</div>
@@ -520,9 +529,14 @@ export default function EliteProposal() {
                     </div>
                   ))}
                 </div>
-                <button className={`pkg-cta ${pkg.tier === "starter" ? "starter-cta" : pkg.tier === "pro" ? "pro-cta" : "elite-cta"}`}>
+                <a
+                  className={`pkg-cta ${pkg.tier === "starter" ? "starter-cta" : pkg.tier === "pro" ? "pro-cta" : "elite-cta"}`}
+                  href={createWhatsAppLink(pkg.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {pkg.featured ? "ابدأ بهذه الباقة" : "اختر هذه الباقة"}
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -599,8 +613,8 @@ export default function EliteProposal() {
               المحتوى الصحيح سيُظهر للعالم ما تبنيه كل يوم.
             </p>
             <div className="cta-btns">
-              <button className="btn-primary">تواصل معنا الآن</button>
-              <button className="btn-ghost">تحميل العرض PDF</button>
+              <a className="btn-primary" href={createWhatsAppLink()} target="_blank" rel="noopener noreferrer">تواصل معنا الآن</a>
+              <a className="btn-ghost" href="mailto:info@noqtatain.com?subject=طلب%20نسخة%20PDF%20-%20عرض%20صفوة%20التشييد">تحميل العرض PDF</a>
             </div>
           </div>
         </section>

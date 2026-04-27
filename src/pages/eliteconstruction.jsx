@@ -214,6 +214,7 @@ const styles = `
     font-family: 'Cairo', sans-serif; transition: all 0.2s;
   }
   .tab-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .tab-btn.force-dark-label { color: var(--ink) !important; }
   .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .post-card {
     padding: 20px; border-radius: var(--r2);
@@ -236,9 +237,9 @@ const styles = `
     border-radius: 100px;
   }
   .pill-ig    { background: rgba(216,90,48,0.2); color: var(--elite2); }
-  .pill-li    { background: rgba(59,130,246,0.2); color: #93c5fd; }
-  .pill-reel  { background: rgba(251,191,36,0.2); color: #fbbf24; }
-  .pill-car   { background: rgba(52,211,153,0.2); color: #6ee7b7; }
+  .pill-li    { background: rgba(59,130,246,0.2); color: var(--ink); }
+  .pill-reel  { background: rgba(251,191,36,0.2); color: var(--ink); }
+  .pill-car   { background: rgba(52,211,153,0.2); color: var(--ink); }
   .post-hook { font-size: 13px; color: var(--gold2); font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
   .post-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
 
@@ -478,8 +479,8 @@ export default function EliteProposal() {
           <div className="who-grid">
             <div className="who-card">
               <div className="who-icon">◆</div>
-              <div className="who-title">متخصصون في قطاع الإنشاءات</div>
-              <div className="who-text">نفهم لغة العقارات والمقاولات والتشطيبات — ونعرف كيف نُترجمها لمحتوى يقنع متخذي القرار.</div>
+              <div className="who-title">متخصصون في التسويق الرقمي الإبداعي</div>
+              <div className="who-text">نبني أفكار محتوى جريئة ورسائل تسويقية ذكية تُبرز قيمة علامتك وتحوّل الاهتمام إلى طلبات فعلية.</div>
             </div>
             <div className="who-card">
               <div className="who-icon">▲</div>
@@ -568,7 +569,7 @@ export default function EliteProposal() {
             {[["all","الكل"],["reel","ريلز"],["car","كاروسيل"],["li","لينكدإن"]].map(([v,l]) => (
               <button
                 key={v}
-                className={`tab-btn ${activeFilter === v ? "active" : ""}`}
+                className={`tab-btn ${activeFilter === v ? "active" : ""} ${["reel","car","li"].includes(v) ? "force-dark-label" : ""}`}
                 onClick={() => setActiveFilter(v)}
               >{l}</button>
             ))}

@@ -203,6 +203,7 @@ const styles = `
     font-family: 'Tajawal', sans-serif; transition: all 0.2s;
   }
   .tab-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .tab-btn.force-dark-label { color: var(--ink) !important; }
   .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .post-card {
     padding: 20px; border-radius: var(--r2);
@@ -225,9 +226,9 @@ const styles = `
     border-radius: 100px;
   }
   .pill-ig    { background: rgba(123,94,167,0.24); color: #d9c6f5; }
-  .pill-li    { background: rgba(96,165,250,0.2); color: #c4dcff; }
-  .pill-reel  { background: rgba(155,126,200,0.25); color: #e7dcfb; }
-  .pill-car   { background: rgba(34,197,94,0.2); color: #b7f7ce; }
+  .pill-li    { background: rgba(96,165,250,0.2); color: var(--ink); }
+  .pill-reel  { background: rgba(155,126,200,0.25); color: var(--ink); }
+  .pill-car   { background: rgba(34,197,94,0.2); color: var(--ink); }
   .post-hook { font-size: 13px; color: var(--gold2); font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
   .post-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
 
@@ -555,7 +556,7 @@ export default function EliteProposal() {
             {[["all","الكل"],["reel","ريلز"],["car","كاروسيل"],["li","لينكدإن"]].map(([v,l]) => (
               <button
                 key={v}
-                className={`tab-btn ${activeFilter === v ? "active" : ""}`}
+                className={`tab-btn ${activeFilter === v ? "active" : ""} ${["reel","car","li"].includes(v) ? "force-dark-label" : ""}`}
                 onClick={() => setActiveFilter(v)}
               >{l}</button>
             ))}

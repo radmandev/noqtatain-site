@@ -101,7 +101,10 @@ const styles = `
     font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
     color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
   }
-  .section-title { font-size: clamp(24px,3vw,36px); font-weight: 800; line-height: 1.3; margin-bottom: 40px; }
+  .section-title {
+    font-size: clamp(24px,3vw,36px); font-weight: 800; line-height: 1.3; margin-bottom: 40px;
+    color: var(--ink2);
+  }
   .section-title em { color: var(--gold); font-style: normal; }
   .divider { height: 1px; background: var(--border); max-width: 960px; margin: 0 auto; }
 
@@ -132,7 +135,7 @@ const styles = `
   }
   .tech-content { flex: 1; }
   .tech-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .tech-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .tech-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; }
 
   /* ── PACKAGES ── */
   .pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -156,15 +159,15 @@ const styles = `
   .pkg-badge.starter { background: rgba(255,255,255,0.14); color: rgba(245,245,247,0.95); }
   .pkg-badge.pro     { background: rgba(123,94,167,0.25); color: var(--gold2); }
   .pkg-badge.elite   { background: rgba(123,94,167,0.2); color: var(--elite2); }
-  .pkg-name { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-  .pkg-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+  .pkg-name { font-size: 20px; font-weight: 800; margin-bottom: 6px; color: var(--ink2); }
+  .pkg-desc { font-size: 13px; color: var(--ink3); line-height: 1.6; margin-bottom: 20px; }
   .pkg-price { font-size: 36px; font-weight: 900; color: var(--gold); }
   .pkg-price span { font-size: 14px; color: var(--muted); font-weight: 400; }
   .pkg-divider { height: 1px; background: var(--border); margin: 0 24px; }
   .pkg-features { padding: 20px 24px 28px; flex: 1; }
   .pkg-feature {
     display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13px; color: var(--muted); line-height: 1.6;
+    font-size: 13px; color: var(--ink3); line-height: 1.6;
     padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .pkg-feature:last-child { border-bottom: none; }
@@ -245,10 +248,10 @@ const styles = `
     flex: 1; padding: 0 0 40px;
   }
   .roadmap-phase { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 6px; }
-  .roadmap-title { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
+  .roadmap-title { font-size: 17px; font-weight: 800; margin-bottom: 10px; color: var(--ink2); }
   .roadmap-tasks { list-style: none; }
   .roadmap-tasks li {
-    font-size: 13px; color: var(--muted); line-height: 1.8;
+    font-size: 13px; color: var(--ink3); line-height: 1.8;
     padding-right: 16px; position: relative;
   }
   .roadmap-tasks li::before {
@@ -294,7 +297,7 @@ const styles = `
   .footer {
     padding: 28px 40px; border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 12px; color: var(--muted);
+    font-size: 12px; color: var(--ink2); background: #f3f5fb;
   }
   .footer a { color: var(--gold); text-decoration: none; }
 
@@ -435,7 +438,7 @@ export default function EliteProposal() {
             </p>
             <div className="hero-logos">
               <div className="hero-logo-box gold">● نقطتين · noqtatain.com</div>
-              <div className="hero-arrow">←</div>
+              <div className="hero-arrow">&</div>
               <div className="hero-logo-box elite">■ EIC · صفوة التشييد</div>
             </div>
             <div className="hero-stats">

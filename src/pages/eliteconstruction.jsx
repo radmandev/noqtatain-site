@@ -188,6 +188,7 @@ const styles = `
     margin: 16px 24px 24px;
     padding: 14px; border-radius: 10px;
     text-align: center; font-size: 14px; font-weight: 700;
+    display: block; text-decoration: none;
     cursor: pointer; border: none;
     transition: opacity 0.2s;
     font-family: 'Cairo', sans-serif;
@@ -289,6 +290,7 @@ const styles = `
     padding: 14px 32px; border-radius: 10px;
     background: var(--gold); color: var(--ink);
     font-size: 15px; font-weight: 800; border: none;
+    display: inline-block; text-decoration: none;
     cursor: pointer; font-family: 'Cairo', sans-serif;
     transition: opacity 0.2s;
   }
@@ -298,6 +300,7 @@ const styles = `
     background: transparent; color: #fff;
     font-size: 15px; font-weight: 600;
     border: 1px solid var(--border);
+    display: inline-block; text-decoration: none;
     cursor: pointer; font-family: 'Cairo', sans-serif;
     transition: border-color 0.2s;
   }
@@ -406,6 +409,14 @@ const pillMap = {
 
 export default function EliteProposal() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const whatsappNumber = "966543569492";
+
+  const createWhatsAppLink = (packageName) => {
+    const message = packageName
+      ? `مرحباً فريق نقطتين، أرغب بالاشتراك في ${packageName} الخاصة بعرض صفوة التشييد.`
+      : "مرحباً فريق نقطتين، أرغب ببدء التعاون بخصوص عرض صفوة التشييد.";
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
 
   const filteredPosts = activeFilter === "all"
     ? posts
@@ -534,9 +545,14 @@ export default function EliteProposal() {
                     </div>
                   ))}
                 </div>
-                <button className={`pkg-cta ${pkg.tier === "starter" ? "starter-cta" : pkg.tier === "pro" ? "pro-cta" : "elite-cta"}`}>
+                <a
+                  className={`pkg-cta ${pkg.tier === "starter" ? "starter-cta" : pkg.tier === "pro" ? "pro-cta" : "elite-cta"}`}
+                  href={createWhatsAppLink(pkg.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {pkg.featured ? "ابدأ بهذه الباقة" : "اختر هذه الباقة"}
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -613,8 +629,8 @@ export default function EliteProposal() {
               المحتوى الصحيح سيُظهر للعالم ما تبنيه كل يوم.
             </p>
             <div className="cta-btns">
-              <button className="btn-primary">تواصل معنا الآن</button>
-              <button className="btn-ghost">تحميل العرض PDF</button>
+              <a className="btn-primary" href={createWhatsAppLink()} target="_blank" rel="noopener noreferrer">تواصل معنا الآن</a>
+              <a className="btn-ghost" href="mailto:info@noqtatain.com?subject=طلب%20نسخة%20PDF%20-%20عرض%20صفوة%20التشييد">تحميل العرض PDF</a>
             </div>
           </div>
         </section>

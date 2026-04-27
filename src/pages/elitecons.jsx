@@ -167,7 +167,7 @@ const styles = `
   .pkg-features { padding: 20px 24px 28px; flex: 1; }
   .pkg-feature {
     display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13px; color: var(--muted); line-height: 1.6;
+    font-size: 13px; color: var(--ink3); line-height: 1.6;
     padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .pkg-feature:last-child { border-bottom: none; }
@@ -251,7 +251,7 @@ const styles = `
   .roadmap-title { font-size: 17px; font-weight: 800; margin-bottom: 10px; color: #fff; }
   .roadmap-tasks { list-style: none; }
   .roadmap-tasks li {
-    font-size: 13px; color: var(--muted); line-height: 1.8;
+    font-size: 13px; color: var(--ink3); line-height: 1.8;
     padding-right: 16px; position: relative;
   }
   .roadmap-tasks li::before {

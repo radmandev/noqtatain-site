@@ -105,6 +105,20 @@ const styles = `
   .section-title em { color: var(--gold); font-style: normal; }
   .divider { height: 1px; background: var(--border); max-width: 960px; margin: 0 auto; }
 
+  /* Force dark copy on light backgrounds for this proposal */
+  .force-dark-copy .section-title,
+  .force-dark-copy .tech-name,
+  .force-dark-copy .tech-desc,
+  .force-dark-copy .roadmap-phase,
+  .force-dark-copy .roadmap-title,
+  .force-dark-copy .roadmap-tasks li,
+  .force-dark-copy .footer {
+    color: var(--ink) !important;
+  }
+  .force-dark-copy .footer a {
+    color: var(--ink2) !important;
+  }
+
   /* ── WHO WE ARE ── */
   .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .who-card {
@@ -400,7 +414,7 @@ export default function EliteProposal() {
   return (
     <>
       <style>{styles}</style>
-      <div className="page">
+      <div className="page force-dark-copy">
 
         {/* NAV */}
         <nav className="nav">

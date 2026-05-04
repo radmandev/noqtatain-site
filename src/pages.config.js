@@ -30,6 +30,7 @@ import WhyUs from './pages/why-us';
 import HobaGalaxy from './pages/hobagalaxy';
 import EliteCons from './pages/elitecons';
 import EliteConstruction from './pages/eliteconstruction';
+import DroobPlan from './pages/DroobPlan';
 import __Layout from './Layout.jsx';
 
 export const PAGES = {
@@ -85,6 +86,9 @@ export const PAGES = {
     EliteConstruction,
     eliteconstruction: EliteConstruction,
     'elite-construction': EliteConstruction,
+    DroobPlan,
+    droob_plan: DroobPlan,
+    'droob-plan': DroobPlan,
 
 };
 

@@ -23,7 +23,10 @@ export default function Layout({ children, currentPageName }) {
   const isEliteConstruction = currentPageName?.toLowerCase() === 'eliteconstruction'
     || location.pathname.toLowerCase().startsWith('/eliteconstruction')
     || location.pathname.toLowerCase().startsWith('/elite-construction');
-  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile || isHobaGalaxy || isEliteCons || isEliteConstruction;
+  const isDroobPlan = currentPageName?.toLowerCase() === 'droobplan'
+    || location.pathname.toLowerCase().startsWith('/droob_plan')
+    || location.pathname.toLowerCase().startsWith('/droob-plan');
+  const hideSiteChrome = isPortal || isFustoqahOffer || isProfile || isHobaGalaxy || isEliteCons || isEliteConstruction || isDroobPlan;
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode

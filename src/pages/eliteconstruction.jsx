@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap');
@@ -307,6 +309,43 @@ const styles = `
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.35); }
 
+
+  .floating-pdf-btn {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 120;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(201,168,76,0.45);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+    color: var(--ink);
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35), 0 0 0 8px rgba(201,168,76,0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+  .floating-pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 55px rgba(0,0,0,0.42), 0 0 0 10px rgba(201,168,76,0.1);
+  }
+  .floating-pdf-btn:disabled {
+    cursor: wait;
+    opacity: 0.72;
+    transform: none;
+  }
+  .floating-pdf-icon { font-size: 18px; line-height: 1; }
+
+  @media print {
+    .no-pdf, .no-print { display: none !important; }
+    .nav { position: static; }
+  }
+
   /* ── FOOTER ── */
   .footer {
     padding: 28px 40px; border-top: 1px solid var(--border);
@@ -320,6 +359,7 @@ const styles = `
     .nav { padding: 12px 20px; }
     .hero, .section, .cta-section { padding-left: 20px; padding-right: 20px; }
     .hero-stats, .who-grid, .tech-grid, .pkg-grid, .posts-grid { grid-template-columns: 1fr; }
+    .floating-pdf-btn { left: 16px; right: 16px; bottom: 16px; justify-content: center; }
     .footer { flex-direction: column; gap: 10px; text-align: center; }
     .pkg-grid { grid-template-columns: 1fr; }
   }
@@ -410,6 +450,8 @@ const pillMap = {
 
 export default function EliteProposal() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const proposalRef = useRef(null);
   const whatsappNumber = "966543569492";
 
   const createWhatsAppLink = (packageName) => {
@@ -423,10 +465,95 @@ export default function EliteProposal() {
     ? posts
     : posts.filter(p => p.types.includes(activeFilter));
 
+  const handleDownloadPdf = async () => {
+    if (!proposalRef.current || isGeneratingPdf) return;
+
+    setIsGeneratingPdf(true);
+
+    try {
+      const proposalElement = proposalRef.current;
+      const canvas = await html2canvas(proposalElement, {
+        backgroundColor: "#08080f",
+        ignoreElements: (element) => element.classList?.contains("no-pdf"),
+        scale: Math.min(window.devicePixelRatio || 1, 2),
+        useCORS: true,
+        windowWidth: proposalElement.scrollWidth,
+        windowHeight: proposalElement.scrollHeight,
+      });
+
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+        compress: true,
+      });
+
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 0;
+      const printableWidth = pageWidth - margin * 2;
+      const printableHeight = pageHeight - margin * 2;
+      const imageHeight = (canvas.height * printableWidth) / canvas.width;
+      const pageHeightInCanvas = Math.floor((printableHeight * canvas.width) / printableWidth);
+      let sourceY = 0;
+      let pageIndex = 0;
+
+      while (sourceY < canvas.height) {
+        const sliceHeight = Math.min(pageHeightInCanvas, canvas.height - sourceY);
+        const pageCanvas = document.createElement("canvas");
+        pageCanvas.width = canvas.width;
+        pageCanvas.height = sliceHeight;
+
+        const context = pageCanvas.getContext("2d");
+        context.drawImage(
+          canvas,
+          0,
+          sourceY,
+          canvas.width,
+          sliceHeight,
+          0,
+          0,
+          canvas.width,
+          sliceHeight,
+        );
+
+        if (pageIndex > 0) pdf.addPage();
+
+        const pageImageHeight = Math.min(imageHeight - pageIndex * printableHeight, printableHeight);
+        pdf.addImage(
+          pageCanvas.toDataURL("image/jpeg", 0.92),
+          "JPEG",
+          margin,
+          margin,
+          printableWidth,
+          pageImageHeight,
+        );
+
+        sourceY += sliceHeight;
+        pageIndex += 1;
+      }
+
+      pdf.save("elite-construction-proposal.pdf");
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
   return (
     <>
       <style>{styles}</style>
-      <div className="page force-dark-copy">
+      <div className="page force-dark-copy" ref={proposalRef}>
+
+        <button
+          className="floating-pdf-btn no-pdf"
+          type="button"
+          onClick={handleDownloadPdf}
+          disabled={isGeneratingPdf}
+          aria-label="تحميل العرض المالي بصيغة PDF"
+        >
+          <span className="floating-pdf-icon">↓</span>
+          <span>{isGeneratingPdf ? "جاري تجهيز PDF..." : "تحميل PDF"}</span>
+        </button>
 
         {/* NAV */}
         <nav className="nav">
@@ -631,7 +758,9 @@ export default function EliteProposal() {
             </p>
             <div className="cta-btns">
               <a className="btn-primary" href={createWhatsAppLink()} target="_blank" rel="noopener noreferrer">تواصل معنا الآن</a>
-              <a className="btn-ghost" href="mailto:info@noqtatain.com?subject=طلب%20نسخة%20PDF%20-%20عرض%20صفوة%20التشييد">تحميل العرض PDF</a>
+              <button className="btn-ghost no-pdf" type="button" onClick={handleDownloadPdf} disabled={isGeneratingPdf}>
+                {isGeneratingPdf ? "جاري تجهيز PDF..." : "تحميل العرض PDF"}
+              </button>
             </div>
           </div>
         </section>

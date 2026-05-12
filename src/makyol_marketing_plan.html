@@ -502,7 +502,22 @@
     font-weight: 600;
     color: var(--cream);
   }
+.logo-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.logo-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* or contain if you don't want cropping */
+  border-radius: 50%;
+}
   .total-summary .value {
     font-size: 26px;
     font-weight: 900;
@@ -531,12 +546,14 @@
 
 <!-- COVER -->
 <div class="cover">
-  <div class="logo-ring">🍖</div>
+<div class="logo-ring">
+  <img src="/public/makyol-logo.webp" alt="Makyol Logo" />
+</div>
   <div class="brand-name">مكيول</div>
   <div class="brand-sub">MAKYOL · IT SUITS YOU PERFECTLY</div>
   <div class="cover-divider"></div>
-  <div class="cover-title">خطة التسويق الرقمي المتكاملة</div>
-  <div class="cover-subtitle">المقترح التسويقي والمالي · 2025</div>
+  <div class="cover-title">مقترح خطة التسويق الرقمي  </div>
+  <div class="cover-subtitle">معد من قبل فريق نقطتين..</div>
   <div class="cover-meta">
     <div>الموقع <span>الرياض – النسيم الشرقي</span></div>
     <div>التخصص <span>مشاوي ومطبخ سعودي وشامي</span></div>
@@ -560,7 +577,7 @@
     </div>
     <div class="metric-card">
       <div class="metric-val warn">165</div>
-      <div class="metric-label">منشور منشور</div>
+      <div class="metric-label">منشور</div>
     </div>
     <div class="metric-card">
       <div class="metric-val good">4.8 ★</div>
@@ -719,7 +736,7 @@
 
     <!-- PRO - FEATURED -->
     <div class="package-card featured">
-      <div class="package-badge">الأكثر طلباً</div>
+      <div class="package-badge">توصيتنا</div>
       <div class="package-header">
         <div class="package-name">الاحترافية</div>
         <span class="package-name-en">Professional</span>
@@ -823,7 +840,7 @@
   <div class="total-summary">
     <div>
       <div class="label">إجمالي رسوم الإعداد والتطوير</div>
-      <div class="note">تُدفع مرة واحدة عند بدء الخدمة</div>
+      <div class="note">مجانية عند الاشتراك في الباقة الاحترافي ٣ أشهر على الأقل</div>
     </div>
     <div>
       <div class="value">14,500 ريال</div>
@@ -887,7 +904,7 @@
   <div class="footer-note">
     جميع الأسعار بالريال السعودي وتشمل ضريبة القيمة المضافة. الباقات قابلة للتخصيص حسب احتياجات مكيول وميزانيته. يُنصح بالبدء بالباقة الاحترافية لضمان نتائج ملموسة خلال 60 يوماً.
   </div>
-  <div class="footer-brand">مقترح سري وخاص بمطعم مكيول · 2025</div>
+  <div class="footer-brand">مقترح حصري وخاص بمطعم مكيول</div>
 </div>
 
 </body>

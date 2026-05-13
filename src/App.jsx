@@ -8,6 +8,7 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Makyol from '@/pages/Makyol';
+import FeedzPlan from '@/pages/FeedzPlan';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -44,6 +45,7 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/makyol" element={<Makyol />} />
+      <Route path="/feedz" element={<FeedzPlan />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

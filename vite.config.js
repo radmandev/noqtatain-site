@@ -8,7 +8,7 @@ import { URL } from 'node:url'
 export default defineConfig({
   logLevel: 'info',
   server: {
-    port: 5173,
+    port: 5174,
     strictPort: true,
     host: true,
   },

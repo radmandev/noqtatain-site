@@ -10,6 +10,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Makyol from '@/pages/Makyol';
 import FeedzPlan from '@/pages/FeedzPlan';
 import LathaLamma from '@/pages/LathaLamma';
+import SeedxOffer from '@/pages/Seedx-offer';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -48,6 +49,7 @@ const AuthenticatedApp = () => {
       <Route path="/makyol" element={<Makyol />} />
       <Route path="/feedz" element={<FeedzPlan />} />
       <Route path="/latha-lamma" element={<LathaLamma />} />
+      <Route path="/seedx-offer" element={<SeedxOffer />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

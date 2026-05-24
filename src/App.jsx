@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Makyol from '@/pages/Makyol';
 import FeedzPlan from '@/pages/FeedzPlan';
+import LathaLamma from '@/pages/LathaLamma';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -46,6 +47,7 @@ const AuthenticatedApp = () => {
     <Routes>
       <Route path="/makyol" element={<Makyol />} />
       <Route path="/feedz" element={<FeedzPlan />} />
+      <Route path="/latha-lamma" element={<LathaLamma />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

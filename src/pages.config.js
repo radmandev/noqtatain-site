@@ -14,6 +14,7 @@ import hamsago from './pages/hamsago';
 import Portal from './pages/Portal.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import NoqtaChatEula from './pages/NoqtaChatEula';
 import beau10 from './pages/beau10';
 import MedhalJazeera from './pages/medhal-jazeera';
 import SafetySideOffer from './pages/safetysideoffer';
@@ -59,6 +60,9 @@ export const PAGES = {
     'medhal-jazeera': MedhalJazeera,
     'privacy-policy': PrivacyPolicy,
     'terms-of-service': TermsOfService,
+    NoqtaChatEula,
+    'noqtachat-eula': NoqtaChatEula,
+    'noqtachat/eula': NoqtaChatEula,
     MutahedDesignOffer,
     'mutahed-design-offer': MutahedDesignOffer,
     HamsaMenuPlan,

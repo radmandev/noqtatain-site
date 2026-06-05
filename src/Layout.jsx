@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronLeft, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WhatsAppButton from './components/WhatsAppButton';
 
@@ -301,6 +301,11 @@ export default function Layout({ children, currentPageName }) {
                   <li>
                     <Link to="/terms-of-service" className="hover:text-violet-400 transition-colors">
                       Terms of service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/noqtachat-eula" className="hover:text-violet-400 transition-colors">
+                      NOQTACHAT EULA
                     </Link>
                   </li>
                 </ul>

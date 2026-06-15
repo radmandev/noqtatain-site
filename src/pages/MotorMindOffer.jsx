@@ -151,6 +151,11 @@ const styles = `
 .mm-offer .pcc:hover { border-color:var(--p);transform:translateY(-5px); }
 .mm-offer .pcc.feat { background:var(--bg3);border-color:var(--p); }
 .mm-offer .fbadge { position:absolute;top:-13px;right:28px;background:var(--p);color:var(--w);font-size:11px;font-weight:800;padding:4px 14px;border-radius:99px;letter-spacing:.5px; }
+.mm-offer .free-month-badge { position:absolute;top:-13px;left:28px;background:var(--y);color:#0A0A0A;font-size:11px;font-weight:800;padding:4px 14px;border-radius:99px;letter-spacing:.5px; }
+.mm-offer .offer-banner { display:flex;align-items:center;gap:14px;background:rgba(255,190,0,.08);border:1px solid rgba(255,190,0,.25);border-radius:8px;padding:18px 24px;margin-bottom:32px; }
+.mm-offer .offer-banner-icon { font-size:28px;flex-shrink:0; }
+.mm-offer .offer-banner-text { font-size:14px;font-weight:700;color:var(--g2);line-height:1.6; }
+.mm-offer .offer-banner-text strong { color:var(--y);font-size:16px; }
 .mm-offer .ppr { font-size:44px;font-weight:900;line-height:1;margin-bottom:4px; }
 .mm-offer .ppr span { font-size:18px;font-weight:600;color:var(--g); }
 .mm-offer .pdiv { height:1px;background:var(--bd2);margin:24px 0; }
@@ -278,7 +283,7 @@ export default function MotorMindOffer() {
       <section className="hero" id="hero">
         <div className="glow g1"></div>
         <div className="glow g2"></div>
-        <div className="tag" style={{ marginBottom: '36px' }}><span className="tdot"></span>تصور مبدئي — سري وخاص</div>
+        <div className="tag" style={{ marginBottom: '36px' }}><span className="tdot"></span>تصور مبدئي — حصري</div>
         <div style={{ fontSize: '13px', color: 'var(--g)', marginBottom: '10px', letterSpacing: '1px' }}>مقدّم لـ شركة موتر ميند للتجارة</div>
         <h1 className="ht">خطة إطلاق<br /><span className="hl">المتجر الإلكتروني</span></h1>
         <p className="hs">تسويق متكامل يجمع المتجر الإلكتروني، الفروع الخمس، والخدمة المتنقلة — مع تحسينات UX تحوّل الزوار إلى مشترين.</p>
@@ -477,6 +482,13 @@ export default function MotorMindOffer() {
         <div className="ey"><span className="ey-t">باقات الشراكة</span></div>
         <h2 className="st">اختار الباقة المناسبة</h2>
         <p className="sd">ثلاث باقات — كلها تشمل الإعداد الأولي وتحسينات UX المذكورة أعلاه.</p>
+        <div className="offer-banner">
+          <div className="offer-banner-icon">🎁</div>
+          <div className="offer-banner-text">
+            <strong>شهر مجاني عند تمام كل ٦ أشهر</strong><br />
+            مكافأة وفائكم — كل ٦ أشهر منجزة تحصلون على الشهر السابع مجاناً بنفس الباقة.
+          </div>
+        </div>
         <div className="pcg">
           <div className="pcc">
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--p2)', letterSpacing: '2px', marginBottom: '18px' }}>الباقة الأولى</div>
@@ -498,6 +510,7 @@ export default function MotorMindOffer() {
           </div>
           <div className="pcc feat">
             <div className="fbadge">الأكثر طلباً</div>
+            <div className="free-month-badge">🎁 شهر مجاني / ٦ أشهر</div>
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--p2)', letterSpacing: '2px', marginBottom: '18px' }}>الباقة الثانية</div>
             <div style={{ fontSize: '22px', fontWeight: '900', marginBottom: '6px' }}>النمو</div>
             <div style={{ fontSize: '13px', color: 'var(--g)', marginBottom: '28px', lineHeight: '1.6' }}>الخيار الأمثل — تسويق متكامل + UX + إعلانات + أتمتة</div>
@@ -517,6 +530,7 @@ export default function MotorMindOffer() {
             <a href="https://wa.me/966543569492?text=أريد%20الاستفسار%20عن%20باقة%20النمو%20-%20موتر%20ميند" target="_blank" rel="noopener noreferrer" className="btn btn-p" style={{ textDecoration: 'none', textAlign: 'center', marginTop: '28px', justifyContent: 'center' }}>ابدأ بهذي الباقة ←</a>
           </div>
           <div className="pcc">
+            <div className="free-month-badge">🎁 شهر مجاني / ٦ أشهر</div>
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--p2)', letterSpacing: '2px', marginBottom: '18px' }}>الباقة الثالثة</div>
             <div style={{ fontSize: '22px', fontWeight: '900', marginBottom: '6px' }}>الشراكة الكاملة</div>
             <div style={{ fontSize: '13px', color: 'var(--g)', marginBottom: '28px', lineHeight: '1.6' }}>لمن يريد ماكينة تسويقية تعمل ٢٤/٧</div>

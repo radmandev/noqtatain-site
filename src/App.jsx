@@ -13,6 +13,7 @@ import LathaLamma from '@/pages/LathaLamma';
 import SeedxOffer from '@/pages/Seedx-offer';
 import Alwesam from '@/pages/Alwesam';
 import BgtOffer from '@/pages/BgtOffer';
+import MotorMindOffer from '@/pages/MotorMindOffer';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -54,6 +55,7 @@ const AuthenticatedApp = () => {
       <Route path="/seedx-offer" element={<SeedxOffer />} />
       <Route path="/alwesam" element={<Alwesam />} />
       <Route path="/bgt" element={<BgtOffer />} />
+      <Route path="/q/02135" element={<MotorMindOffer />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

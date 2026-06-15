@@ -491,6 +491,7 @@ export default function MotorMindOffer() {
         </div>
         <div className="pcg">
           <div className="pcc">
+            <div className="free-month-badge">🎁 شهر مجاني / ٦ أشهر</div>
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--p2)', letterSpacing: '2px', marginBottom: '18px' }}>الباقة الأولى</div>
             <div style={{ fontSize: '22px', fontWeight: '900', marginBottom: '6px' }}>الانطلاقة</div>
             <div style={{ fontSize: '13px', color: 'var(--g)', marginBottom: '28px', lineHeight: '1.6' }}>للإطلاق الذكي — سوشيال + متجر + واتساب أساسي</div>

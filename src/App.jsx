@@ -14,7 +14,7 @@ import SeedxOffer from '@/pages/Seedx-offer';
 import Alwesam from '@/pages/Alwesam';
 import BgtOffer from '@/pages/BgtOffer';
 import MotorMindOffer from '@/pages/MotorMindOffer';
-import Embed from '@/pages/Embed';
+import LamasatNoqtatainProposal from '@/pages/Lamasat-Noqtatain-Proposal';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -57,7 +57,7 @@ const AuthenticatedApp = () => {
       <Route path="/alwesam" element={<Alwesam />} />
       <Route path="/bgt" element={<BgtOffer />} />
       <Route path="/q/02135" element={<MotorMindOffer />} />
-      <Route path="/embed" element={<Embed />} />
+      <Route path="/q/011293" element={<LamasatNoqtatainProposal />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

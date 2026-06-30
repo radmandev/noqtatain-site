@@ -15,6 +15,7 @@ import Alwesam from '@/pages/Alwesam';
 import BgtOffer from '@/pages/BgtOffer';
 import MotorMindOffer from '@/pages/MotorMindOffer';
 import LamasatNoqtatainProposal from '@/pages/Lamasat-Noqtatain-Proposal';
+import WameerDiagnostic from '@/pages/WameerDiagnostic';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -58,6 +59,7 @@ const AuthenticatedApp = () => {
       <Route path="/bgt" element={<BgtOffer />} />
       <Route path="/q/02135" element={<MotorMindOffer />} />
       <Route path="/q/011293" element={<LamasatNoqtatainProposal />} />
+      <Route path="/q/01140" element={<WameerDiagnostic />} />
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />

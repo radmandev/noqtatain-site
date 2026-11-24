@@ -26,6 +26,12 @@ const slides = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [lang, setLang] = useState(() => localStorage.getItem('lang') || 'ar');
+
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) {
@@ -97,6 +103,15 @@ export default function Home() {
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* Language Switcher */}
+      <button
+        onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
+        className="fixed bottom-8 left-8 z-30 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-md text-sm font-semibold text-slate-900 dark:text-white hover:bg-white dark:hover:bg-slate-700 transition-colors"
+        aria-label="Switch language"
+      >
+        {lang === 'ar' ? 'English' : 'العربية'}
+      </button>
 
       {/* Slide Navigation */}
       <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-30 flex flex-col items-center space-y-4">
